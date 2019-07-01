@@ -141,6 +141,81 @@
 		注意:删除表结构也会删除响应数据
 		需求:删除txl表结构
 		drop table txl;
+	c.约束
+		主键  列中的数据唯一(不重复)，每张表中只能有一个，非空
+		唯一  列中的数据唯一(不重复)，作为主键约束的补充，可以为空
+		检查  列中的数据是否满足条件
+		非空  列中的数据不能为空
+		外键  列中的数据依赖于另外一张表中列的数据
+		语法:
+		create table 表 (
+			列  数据类型 primary key,   #主键约束
+			列  数据类型 unique,        #唯一约束
+			列  数据类型 not null,      #非空约束
+			列  数据类型 check(检查条件),#检查约束
+			列  数据类型 references 被参考表(被参考列)
+		);
+
+3.mysql常用管理工具
+	mysql workbench
+	sqlyog (小海豚)
+	navicat
+	dbeaver
+	phpmyadmin
+4.SQL分类
+	SQL(结构化查询语言)
+	DDL：数据库定义语言   create alter drop truncate
+	DML：数据操作语言     insert delete update
+	DCL：数据库控制语言   grant revoke
+	DQL：数据库查询语言   select
+5.数据的新增
+	字符类型数据需要加单引号
+	数字类型数据直接使用
+	日期类型数据需要加单引号
+	列和值的位置一定要对应,注意数据类型
+	create table goods1 (
+		name  char(10),
+		price int
+	);
+	a.向表中所有列新增数据
+		语法:insert into 表 values(值1,值2,值3....);
+		需求：向goods1表中新增数据，商品名称 misamisa，价格100
+		insert into goods1 values('misamisa',100);
+	b.向表中指定列新增数据
+		语法:insert into 表(列1,列2...) values(值1,值2...);
+		需求:向goods1表中新增数据，商品名称king
+		insert into goods1(name) values('king');
+		需求：向goods1表中新增数据，商品名称 misamisa，价格100
+		insert into goods1(price,name) values(100,'misamisa');
+	c.野路子
+		insert into goods1 values('heygor',250),('ladeng',290),('xq',1);
+6.数据的修改
+	语法:update 表 set 列=值 where 条件;
+	where条件是搜索满足条件的行的，列=值是搜索到之后进行的处理
+	如果不加where条件，默认修改的是整个列的数据
+	如果增加where条件，修改的是满足条件的行的列的数据
+	需求:修改goods1表中数据，名字叫misamisa的价格改为911
+	update goods1 set price=911 where name='misamisa';
+	需求:修改goods1表中数据，价格设置为0
+	update goods1 set price=0;
+7.数据的删除
+	delete    DML，删除指定数据，删除数据可以找回
+	truncate  DDL，删除所有数据，删除数据无法找回
+	a.delete语法
+	delete from 表 where 条件;
+	需求:删除goods1表中名字为heygor的数据
+	delete from goods1 where name='heygor';
+	需求:删除goods1表中所有数据
+	delete from goods1;
+	b.tuncate(截断表)
+	语法:truncate table 表;
+	需求:删除goods1表中所有数据
+	truncate table goods1;
+	
+
+
+
+
 
 
 
