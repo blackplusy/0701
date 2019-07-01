@@ -1,0 +1,150 @@
+--------------------------------------
+测试的分类
+1.功能测试     		7-9k
+2.游戏测试           6-16k
+3.自动化测试         13k
+	python 
+	selenium
+	robot
+4.性能测试           18k
+	java
+	jemeter
+	c
+	loaderuuner
+5.安全测试           未知
+6.接口测试
+
+测试职业规划
+1.水果店老板
+2.技术牛   3-5w
+3.管理     30-50w
+4.顾问     
+
+-----------------------------------------------------------
+1.什么是数据库
+	存储数据的仓库
+2.常见的数据库软件
+	关系型数据库
+		informix  IBM+HP 军、政、运、银 
+		db2       IBM    军、政、运、银
+		oracle    甲骨文  中大型 
+		mysql     甲骨文  互联网
+		sqlserver 微软    传统
+	非关系型数据库
+		mongodb   大数据、爬虫
+		redis     缓存、消息队列
+		cassandra facebook
+3.mysql软件的安装
+	a>使用集成工具
+		xampp
+		wamp
+		phpstudy
+	b>官网下载安装
+		https://dev.mysql.com/downloads/mysql/
+4.启动和测试
+	a>启动phpstudy
+	b>测试mysql
+		查看进程：
+			win+r--cmd--tasklist  | find  "mysqld"
+			tasklist  查看系统中正在运行的进程
+			|         前面的输出作为后面的输入
+			find      搜索
+		查看端口：
+			win+r--cmd--netstat -an| find "3306"
+			netstat -an 查看系统中开放的所有端口
+5.mysql的服务和端口
+	mysqld    mysql的主服务
+	mysql     mysql的客户端服务
+	3306      mysql的端口
+
+6.登录mysql
+	a>登录方式
+		a1.进入到命令所在文件夹
+		a2.设置环境变量(推荐)
+			右键计算机--设置--属性--高级--环境变量--系统变量--Path中添加
+			;D:\phpStudy\MySQL\bin
+			确定--确定--确定
+	b>登录命令(命令提示符:win+r--cmd)
+		mysql
+			登录电脑本地数据库
+		mysql -u root -p
+			管理员登录本地数据库
+		mysql -h 127.0.0.1 -u root -p
+			管理员登录IP为127.0.0.1的数据库
+7.mysql基础
+	数据库分为2部分：数据库软件、数据库数据
+	数据库是由表组成
+	表是由数据组成
+
+8.常见命令(登录mysql后)
+	 show databases;
+	 	查看当前数据库有哪些
+	 select database();
+	 	查看当前数据库的名字
+	 use test;
+	 	数据库切换为test
+	 show tables;
+	 	查看当前数据库中有哪些表
+	 select * from user\G;
+	 	查看user表中所有的数据
+
+------------------------------------------
+1.复习
+	a.环境变量设置
+	b.mysql登陆命令
+		mysql -u 用户 -p
+	c.mysql的管理员
+		root
+	d.基础命令
+		show databases;
+		use test;
+		select database();
+		show tables;
+		select * from user;
+2.表(table)
+	a.数据类型
+		数字  123  456             int
+		字符  'memeda' '123'       char  varchar
+		日期  '1997-01-01'         date
+		char     定长，数据长度固定  char(10)  'aaaaaa'
+		varchar  变长，数据长度可变  varchar(10) 'bbbbbb'
+	b.表结构的创建
+		语法:
+		create table 表 (
+			列(表头)  数据类型,
+			列(表头)  数据类型,
+			...
+		);
+		需求:创建表格通讯录(txl),里面3个列，名字(name) 字符类型，最多10个字符，电话(tel) 数字类型，生日(birth) 日期类型
+		create table txl (
+				name char(10),
+				tel  int,
+				birth  date
+		);
+		注意:列和列之间用逗号隔开，最后一个列不需要逗号
+		补充:表结构查询（表结构描述）
+		desc  表名;
+		需求:查看txl表的表结构
+		desc txl;
+	c.修改表结构
+		c1.修改数据类型
+		需求:修改txl表中tel的数据类型为字符类型，最多5字符
+		alter table txl modify tel char(5);
+		c2.删除列
+		需求:删除txl表中birth列
+		alter table txl drop column birth;
+		c3.增加列
+		需求:txl表中增加birth列日期类型
+		alter table txl add birth date;
+	d.删除表结构
+		语法:drop table 表;
+		注意:删除表结构也会删除响应数据
+		需求:删除txl表结构
+		drop table txl;
+
+
+
+
+
+
+
