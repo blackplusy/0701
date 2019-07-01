@@ -155,7 +155,6 @@
 			列  数据类型 check(检查条件),#检查约束
 			列  数据类型 references 被参考表(被参考列)
 		);
-
 3.mysql常用管理工具
 	mysql workbench
 	sqlyog (小海豚)
@@ -211,7 +210,31 @@
 	语法:truncate table 表;
 	需求:删除goods1表中所有数据
 	truncate table goods1;
-	
+8.ecshop项目环境搭建
+	a.安装配置好phpstudy
+	b.phpstudy的文件夹说明
+		apache     web服务器所在文件夹
+			conf   存放配置文件
+			bin    存放命令
+			logs   存放日志
+			httpd.conf  apache的配置文件
+		mysql      mysql所在文件夹
+			bin    存放mysql命令
+			data   存放数据
+			my.ini mysql的配置文件
+		www        项目部署文件夹
+	c.启动phpstudy
+	d.下载ecshop.zip解压到www文件夹中(q群--项目)
+	e.浏览器中输入127.0.0.1/ecshop根据提示安装
+		127.0.0.1==localhost==电脑本机
+	f.配置系统注意
+		数据库主机：localhost
+		端口号：    3306
+		用户名：    root
+		密码:       root
+		数据库名:    test
+
+
 
 
 
