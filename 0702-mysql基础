@@ -72,6 +72,62 @@ svn、git
 		查询指定行的列
 		需求:查询ecs_goods表中商品名称是KD876的本店售价
 		select shop_price from ecs_goods where goods_name='KD876';
+	C.where条件
+		c1.比较
+			>    大于
+			<    小于
+			=    等于
+			>=
+			<=
+			!=   不等于
+			<>   不等于
+			需求:查询ecs_goods表中本店售价高于2000的商品的所有信息
+			select * from ecs_goods where shop_price>2000;
+			需求:查询ecs_goods表中商品名称是不是kd876的商品的名字
+			select goods_name from ecs_goods where goods_name<>'kd876';
+		c2.关系
+			and  同时满足
+			or   满足一个即可
+			not  不满足
+			需求:查询ecs_goods表中本店售价高于1000并且低于2000的所有商品名称和本店售价
+			select goods_name,shop_price from ecs_goods where shop_price>1000 and shop_price<2000;
+			需求:查询ecs_goods表中商品名称是kd876或者诺基亚的所有信息
+			select * from ecs_goods where goods_name='kd876' or goods_name='诺基亚';
+		c3.区间
+			包含两个端点，小在前大在后
+			between...and...
+			需求:查询ecs_goods表中本店售价范围1600和3000之间的所有信息
+			select * from ecs_goods where shop_price>=1600 and shop_price<=3000;
+			select * from ecs_goods where shop_price between 1600 and 3000;
+		c4.模糊查询
+			当信息不完整时候使用，通常是和字符类型一起使用
+			like
+			_     一个字符
+			%     任意个字符
+			需求:查询ecs_goods表中商品名称是诺基亚开头的所有信息
+			select * from ecs_goods where goods_name like '诺基亚%';
+			需求:查询ecs_goods表中商品名称是6结尾的所有信息
+			select * from ecs_goods where goods_name like '%6';
+			需求:查询ecs_goods表中商品名称是6个字符的所有信息
+			select * from ecs_goods where goods_name like '______';
+		c5.空值查询(null)
+			空没有任何数据类型，没有任何值,不能用于比较和运算，查询时候使用is null或者is not null
+			查询ecs_goods表中suppliers_id为空的所有信息
+			select * from ecs_goods where suppliers_id is null;
+			查询ecs_goods表中suppliers_id为非空的所有信息
+			select * from ecs_goods where suppliers_id is not null;
+		c6.in(在...里面)
+			in后面括号中内容为或的关系
+			需求:查询ecs_goods表中商品名称是kd876或者诺基亚的所有信息
+			select * from ecs_goods where goods_name in ('kd876','诺基亚');
+			
+
+
+
+
+
+
+
 
 
 
