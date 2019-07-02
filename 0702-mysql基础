@@ -120,7 +120,56 @@ svn、git
 			in后面括号中内容为或的关系
 			需求:查询ecs_goods表中商品名称是kd876或者诺基亚的所有信息
 			select * from ecs_goods where goods_name in ('kd876','诺基亚');
-			
+
+2.多表查询
+	当一张表中的数据无法满足条件时候，使用多张表
+	a.笛卡尔积(集)
+	当两张表不做任何关联产生的数据
+	导致数据量成倍增加，无效数据增加，降低数据库性能，所以会使用内联查询、左联查询、右联查询
+	select * from ecs_goods;
+	select * from ecs_category;
+	select * from ecs_category,ecs_goods;
+	b.内联查询
+	语法：
+	select 列 from 表1，表2 where 表1.列=表2.列;
+	select 列 from 表1 inner join 表2 on 表1.列=表2.列;
+	判断关联列的方法
+		1.名字相同
+		2.作用相同
+		3.主外键关系
+	需求：查询商品名称是KD876的分类名称
+		1.分析列
+			商品名称
+			分类名称
+		2.分析列所在的表
+			商品名称   ecs_goods
+			分类名称   ecs_category
+		3.关联
+			select * from ecs_category,ecs_goods
+			where ecs_category.cat_id=ecs_goods.cat_id;
+		4.过滤
+			select cat_name from ecs_category,ecs_goods
+			where ecs_category.cat_id=ecs_goods.cat_id
+			and goods_name='KD876';
+	需求:查询分类名称是3G手机的商品名称有哪些？（cat_id）
+		1.分析列
+			分类名称
+			商品名称
+		2.分析表
+			ecs_goods
+			ecs_category
+		3.关联
+			select * from ecs_goods g,ecs_category c
+			where g.cat_id=c.cat_id;
+		4.过滤
+			select g.goods_name from ecs_goods g,ecs_category c
+			where g.cat_id=c.cat_id
+			and c.cat_name='3G手机'	;
+
+
+
+
+
 
 
 
