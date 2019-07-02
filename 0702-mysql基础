@@ -1,0 +1,78 @@
+代码版本管理工具
+svn、git
+1.svn架构
+	c----                   /----          s
+	客户端                               服务器
+	192.168.6.110(开发)              192.168.7.136
+	192.168.6.32(测试)
+	192.168.7.2(运维)
+2.客户端软件的安装(小乌龟)
+	https://tortoisesvn.net/downloads.html
+3.访问svn
+	右键桌面--tortoise svn--repo xxx --填写svn服务器地址
+	http://192.168.7.136/svn
+	用户名:web
+	密码:web
+----------------------------------------------------------------------------
+复习：
+1.常见数据库软件
+2.mysql的安装
+3.环境变量设置
+4.基础命令
+5.表操作
+	a.创建表结构
+		create table 表 (
+			列 数据类型,
+			列 数据类型，
+			...
+		)
+	b.修改表结构
+		alter table 表 add 列 数据类型
+		alter table 表 modify 列 数据类型
+		alter table 表 drop column 数据类型
+	c.删除表结构
+		drop table 表;
+6.数据的新增
+	向表中指定列新增数据
+		insert into 表(列1，列2.....) values(值1,值2...);
+	向表中所有列新增数据
+		insert into 表 values(值1，值2.....);
+7.数据的修改
+	update 表 set 列=值 where 条件;
+8.数据的删除
+	delete from 表 where 条件;
+	truncate table 表;
+9.SQL的分类
+	ddl：create alter drop truncate
+	dml：insert delete update
+	dcl：grant revoke
+	dql：select
+10.ecshop网店搭建
+-----------------------------------------------------------------------------------
+参考资料:http://book.ecmoban.com/images/db.htm
+1.数据的查询
+	a.查询的分类
+		简单查询
+		多表查询
+		分组查询
+		子查询
+	b.简单查询
+		查询可以查询指定行、指定列、指定行的列
+		字符类型数据、日期类型数据加单引号
+		*代表所有列
+		数字类型数据直接使用
+		语法:select 列 from 表 where 条件;
+		select后面 from 前面是和列相关，where条件是和行相关的
+		查询指定行
+		需求:查询ecs_goods表中商品名称是KD876的所有信息
+		select * from ecs_goods where goods_name='KD876';
+		查询指定列
+		需求:查询ecs_goods表中所有商品名称
+		select goods_name from ecs_goods;
+		查询指定行的列
+		需求:查询ecs_goods表中商品名称是KD876的本店售价
+		select shop_price from ecs_goods where goods_name='KD876';
+
+
+
+
