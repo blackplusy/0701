@@ -166,9 +166,82 @@ svn、git
 			where g.cat_id=c.cat_id
 			and c.cat_name='3G手机'	;
 
-    需求1:查询分类名称是3G手机或者服装的商品名称有哪些
+	需求1:查询分类名称是3G手机或者服装的商品名称有哪些
+		1.分析列
+			分类名称
+			商品名称
+		2.分析表
+			ecs_goods
+			ecs_category
+		3.关联
+			select * from ecs_goods g,ecs_category c
+			where g.cat_id=c.cat_id;	
+		4.过滤
+			select g。goods_name from ecs_goods g,ecs_category c
+			where g.cat_id=c.cat_id
+			and c.cat_name='3G手机' or c.cat_name='服装';
+
     需求2：查询商品本店售价范围在2000和3000之间所有的商品的分类名称 
+    	1.分析列
+    		本店售价
+    		分类名称
+    	2.分析表
+    		ecs_goods
+    		ecs_category
+    	3.关联			
+    	    select * from ecs_goods g,ecs_category c
+			where g.cat_id=c.cat_id;	
+		4.过滤
+			select c.cat_name from ecs_goods g,ecs_category c
+			where g.cat_id=c.cat_id
+			and g.shop_price between 2000 and 3000;
+		补充：去重函数  distinct()
+			select distinct(c.cat_name) from ecs_goods g,ecs_category c
+			where g.cat_id=c.cat_id
+			and g.shop_price between 2000 and 3000;
     需求3：查询分类名称是3G手机并且商品名称以诺基亚开头的商品名称 
+    	1.分析列
+    		分类名称
+    		商品名称
+    	2.分析表
+    		ecs_goods
+    		ecs_category
+    	3.关联、过滤
+    		select g.goods_name from ecs_goods g,ecs_category c
+			where g.cat_id=c.cat_id
+			and c.cat_name='3G手机'
+			and g.goods_name like '诺基亚%';
+	--1.jpg
+		1.select * from test1 where department='计算机系' and place='北京';
+		2.update test1 set department='信息学院' where department='计算机系';
+		3.
+		select t1.no,t1.name,t2.grade,t2.courses from test1 t1,test2 t2 
+		where t1.no=t2.no
+		and t1.grade>75;
+	--2.jpg
+		1.select s.name from achievement a,student s
+		where a.id=s.id and a.mark>85;
+		2.select count(id) from achievement where mark>=90;
+		3.insert into achievement values(7,80);
+		4.update achievement set mark=87 where id=3;
+		5.delete from student where name='Betty';
+		  delete from achievement where id=6;
+	--4.jpg
+		1.select s#,grade from sc where c#='C2';
+		2.select sname from s where sname like 'D%';
+		3.select  s.s#,s.sname from s,sc,c where s.s#=sc.s# and c.c#=sc.c# and c.cname='Maths';
+		4.select s# from sc where c# in ('C2','C4');
+3.安装部署sakila数据库
+	a.下载sakila数据库压缩包
+		https://dev.mysql.com/doc/index-other.html
+	b.解压压缩包
+	c.进入到已经解压好的文件夹下,地址栏中输入cmd
+	d.登陆数据库
+		mysql -u root -p
+	e.导入sakila-schema.sql;
+		source sakila-schema.sql;
+	f.导入sakila-data.sql
+		source sakila-data.sql;
 
 
 
