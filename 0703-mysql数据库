@@ -131,5 +131,52 @@
 	4.查询国家表中country_id为上面查询出来结果的国家名称
 	select country from country where country_id in (select country_id from city where city_id in (select city_id from address where address_id in (select address_id from customer where first_name='MARY')));
 
+--7.jpg
+	1.
+	a.查询c表中满足条件的c#
+		select c# from c where cn='税收基础';
+	b.查询sc表中满足c#为上面查询出来结果的s#
+		select s# from sc where c# in (select c# from c where cn='税收基础');
+	c.查询s表中s#为上面查询出来结果的s#和sn
+		select s#,sn from s where s# in (select s# from sc where c# in (select c# from c where cn='税收基础'));
+	2.
+	a.查询sc表中满足条件的s#
+		select s# from sc where c#='C2';
+	b.查询s表中s#为上面查询出来结果的sn，sd
+		select sn,sd from s where s# in (select s# from sc where c#='C2');
+	3.
+	select sn,sd from s where s# in (select s# from sc where c#!='C5');
+
+3.分组查询
+按照某种属性进行分类
+a.分组函数
+	经常和分组一起使用，也可以单独使用
+	max()  最大
+	min()  最小
+	avg()  平均
+	sum()  求和
+	count()计数
+	需求:查询ecs_goods表中最高市场价，最低市场价，平局市场售价分别是？
+	select max(market_price),min(market_price),avg(market_price) from ecs_goods;
+	需求:查询ecs_goods表中本店售价最高的商品名称
+	select max(shop_price) from ecs_goods;
+	select goods_name from ecs_goods where shop_price=(select max(shop_price) from ecs_goods);
+b.分组
+	语法：select 列 from 表
+			where 条件
+				group by 分组条件
+					having 分组后过滤条件;
+	分组条件通常是每后面跟的信息
+	需求:查询ecs_goods表中每种分类id对应多少种商品
+		select cat_id,count(goods_name) from ecs_goods group by cat_id;
+	需求:查询每种分类对应多少种商品，要求显示商品分类名称，商品数量
+		select * from ecs_goods g,ecs_category c
+		where g.cat_id=c.cat_id;
+		select c.cat_name,count(g.goods_name)from ecs_goods g,ecs_category c
+		where g.cat_id=c.cat_id
+		group by c.cat_name;
+
+
+
 
 
