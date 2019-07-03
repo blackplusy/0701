@@ -93,6 +93,18 @@
 		select cat_name from ecs_category where cat_id in (select cat_id from ecs_goods where shop_price between 2000 and 3000);
 	子查询练习：
 	查询以C开头的国家有哪些城市?
+	1.分析列
+		国家名称
+		城市名称
+	2.分析表
+		国家表
+		城市表
+	3.分析关联列
+		country_id
+	a.查询国家表中满足条件的country_id
+		select country_id from country where country like 'C%';
+	b.查询城市表中country_id为上面查询出来结果的城市名称
+		select city from city where country_id in (select country_id from country where country like 'C%');
 
 	查询客户表中名字为MARY的所在城市?
 
