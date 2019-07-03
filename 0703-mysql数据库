@@ -214,7 +214,47 @@ b.分组
 	where c.country_id=co.country_id
 	and co.country like 'C%'
 	group by co.country;
-	
+
+c.分组后过滤
+	where    分组前过滤、不能直接跟分组函数
+	having   分组后过滤、可以直接跟分组函数
+	需求:查询城市数量超过50的国家名称
+	select co.country,count(c.city) from country co,city c
+	where co.country_id=c.country_id
+	group by co.country
+	having count(c.city)>50;
+
+
+
+4.排序和分页
+a.排序
+	语法：
+	select 列  from 表
+		where 条件
+			group by 分组条件
+				having 分组后过滤条件
+					order by 排序条件;
+	顺序：从小到大
+	order by 列;
+	order by 列 asc;
+	倒序：从大到小
+	order by 列 desc;
+	需求:查询ecs_goods表中所有数据，按照本店售价从小到大进行排序
+	select * from ecs_goods order by shop_price;
+	需求:查询ecs_goods表中所有数据，按照市场售价倒序排列
+	select * from ecs_goods order by market_price desc;
+b.分页
+	语法：
+		select 列  from 表
+			where 条件
+				group by 分组条件
+					having 分组后过滤条件
+						order by 排序条件
+							limit 分页;
+	需求:查询ecs_goods表中前5条数据
+	select * from ecs_goods limit 5;
+	需求:查询ecs_goods表中6-10条数据
+	select * from ecs_goods limit 5,5;
 
 
 
