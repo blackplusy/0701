@@ -177,12 +177,45 @@ b.分组
 		group by c.cat_name;
 
 查询每个国家有多少个城市,要求显示国家名称,城市数量?
-
+分析列
+	国家名称
+	城市名称
+分析表
+	city
+	country
+关联
+	select * from city c，country co
+	where c.country_id=co.country_id;
+过滤
+	select co.country,count(c.city)  from city c,country co
+	where c.country_id=co.country_id
+	group by co.country;
 
 查询每个城市有多少个客户,要求显示城市名称,客户数量
-
+分析列
+	城市名称
+	客户id
+分析表
+	city
+	customer
+	address
+关联
+	select * from city c,customer cu,address a
+	where c.city_id=a.city_id
+	and a.address_id=cu.address_id;
+过滤
+	select c.city,count(cu.customer_id) from city c,customer cu,address a
+	where c.city_id=a.city_id
+	and a.address_id=cu.address_id
+	group by c.city;
 
 查询C开头的国家,每个国家有多少个城市
+	select co.country,count(c.city) from city c,country co
+	where c.country_id=co.country_id
+	and co.country like 'C%'
+	group by co.country;
+	
+
 
 
 
