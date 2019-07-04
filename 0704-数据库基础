@@ -187,8 +187,19 @@ mongodb
 		9.日期
 		10.空
 		db.xiyouji.find({age:{$type:2}})
-
-
+11.文档的修改
+	修改指定属性($set)
+	db.xiyouji.update({name:'puti'},{$set:{age:100}})
+	覆盖
+	db.xiyouji.update({name:'puti'},{age:99})
+	增长($inc)
+	db.xiyouji.update({name:'5kong'},{$inc:{age:10}})
+	db.xiyouji.update({name:'5kong'},{$inc:{age:-100}})
+	属性(键)重命名
+	db.xiyouji.update({name:'yudi'},{$rename:{'age':'nianling'}})
+	多行修改
+	默认修改文档只修改第一个，如果需要批量修改增加参数multi：True
+	db.xiyouji.update({name:'2dog'},{$set:{age:9999}},{multi:true})
 
 
 
