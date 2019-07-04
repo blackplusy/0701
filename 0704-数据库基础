@@ -1,0 +1,71 @@
+--3.png
+select * from dt_pay where salary>(select avg(salary) from dt_pay);
+select * from dt_pay;
+truncate table dt_pay;
+
+--4.png
+1.
+select xm,zkzh from tb_student where score>0 and score<5;
+select * from tb_student where xm='张三' and score=5;
+2.
+select  c.成绩表 
+from 学生表 s,成绩表 c
+where s.准考证号=c.准考证号
+and s.年龄 between 20 and 35
+order by s.准考证号 desc;
+
+--2.png
+1.
+select count(*) from table1 t1,table2 t2
+where t1.学生id=t2.学生id;
+2.
+select t2.家庭住址 from table1 t1,table2 t2
+where t1.学生id=t2.学生id
+and t1.姓名 like '张%'
+and t1.性别='女'
+order by t1.姓名 ;
+
+--5.bmp
+select avg(english) from mark;
+select m.math,c.name,c.address,c.telno
+from cust c,mark m
+where c.studentno=m.studentno
+and s.studentno in (11,22,33,44,55);
+
+--6.jpg
+create table user (
+	userid   int(11) primary key,
+	username  varchar2(20) not null,
+	password  varchar2(20) notnull,
+	crtime    date   not null
+);
+
+insert into user values(1002,'admin','admin','2015-01-01');
+
+--8.jpg
+1.create table store_information(
+	name char(20),
+	sales int,
+	data  date
+);
+
+2.alter table store_information add memo char(20);
+
+3.update store_information set name=repalce(name,'店'，'分店');
+
+alter table store_information rename column name to store_name;
+
+4.
+select store_name,date,avg(sales) from store_information group by store_name,date;
+
+
+5.
+select  store_name,sum(sales) from store_information group by store_name
+having sum(sales)>1000000;
+
+
+--qq笔试
+1.select * from emp where deptno=30；
+2.select ename,empno,deptno from emp;
+3.select  ename from emp where comm>sal;
+4.select  ename from emp where comm>sal*0.6;
