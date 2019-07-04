@@ -70,6 +70,7 @@ having sum(sales)>1000000;
 3.select  ename from emp where comm>sal;
 4.select  ename from emp where comm>sal*0.6;
 -----------------------------------------------------------------------------
+https://docs.mongodb.com/manual/reference/operator/query/#query-selectors
 mongodb
 1.下载安装mongodb
 	https://www.mongodb.com/download-center
@@ -148,6 +149,47 @@ mongodb
 		 db.xiyouji.remove({name:'5kong'})
 	删除所有文档
 		db.xiyouji.remove({})
+9.文档的查询
+	查询集合中指定属性的值
+		db.xiyouji.find({},{name:1,_id:0})
+	查询集合中满足条件的值
+		db.xiyouji.find({age:200})
+	查询集合中满足条件的属性的值
+		db.xiyouji.find({age:100},{_id:0,name:1})
+10.查询表达式
+	比较
+		$gt     大于
+		$gte    大于等于
+		$lt     小于
+		$lte    小于等于
+		$ne     不等于
+		db.xiyouji.find({age:{$gte:100}})
+		db.xiyouji.find({age:{$ne:200}})
+	关系
+		$and    同时满足
+		$or     满足一个条件即可
+		$not    不满足条件
+		db.xiyouji.find({$and:[{age:{$gt:20}},{name:'5kong'}]})
+		db.xiyouji.find({$or:[{name:'puti'},{name:'5kong'}]})
+	存在性
+		$exists 属性是否存在
+		db.xiyouji.find({age:{$exists:0}})
+		db.xiyouji.find({age:{$exists:1}})
+	数据类型
+		$type
+		1:数字
+		2:字符
+		3：对象
+		4：数组
+		5：二进制数据
+		7.对象id
+		8.布尔
+		9.日期
+		10.空
+		db.xiyouji.find({age:{$type:2}})
+
+
+
 
 
 
