@@ -69,3 +69,66 @@ having sum(sales)>1000000;
 2.select ename,empno,deptno from emp;
 3.select  ename from emp where comm>sal;
 4.select  ename from emp where comm>sal*0.6;
+-----------------------------------------------------------------------------
+mongodb
+1.下载安装mongodb
+	https://www.mongodb.com/download-center
+	操作系统
+	x86_64
+	x64      64位操作系统
+
+2.安装
+	a.解压压缩包文件
+	b.设置环境变量(让系统可以直接调用命令)
+	计算机--属性--高级--环境变量--系统变量--Path中添加
+	;D:\share\mongodb-win32-x86_64-2008plus-ssl-4.0.10\bin
+	确定--确定--确定
+
+3.启动服务
+	a.常见服务
+		mongod     主服务
+		mongo      客户端服务
+	b.服务的启动(命令提示符)
+		命令提示符：win+r--cmd
+		mongod --dbapth d:\data
+		mongod --dbpath d:\data --logptah d:\data\mongo.log
+		--dbpath  数据存放路径(文件夹)
+		--logptah 日志存放位置(文件)
+	c.检查服务和端口
+		mongodb的端口27017
+		c1.检查服务
+			win+r--cmd--tasklist | find "mongod"
+			tasklist   任务管理器
+			|          管道，前面的输出作为后面的输入
+			find       搜索
+		c2.检查端口
+			win+r--cmd--netstat -an | find "27017"
+			netstat -an 查看电脑中所有端口
+4.登陆mognodb(命令提示符)
+	mongo
+		登陆本地test数据库
+	mongo 127.0.0.1/admin
+		登陆IP地址位127.0.0.1的admin数据库
+	mongo 127.0.0.1:27017/admin
+		登陆IP地址为127.0.0.1的端口是27017的admin数据库
+5.基础命令
+	数据库是由集合组成
+	集合是由文档组成
+	mysql          mongodb
+	数据库          数据库
+	表              集合
+	数据            文档
+	show databases
+	show dbs          查看当前有哪些数据库
+	db                查看当前数据库的名字
+	use admin         数据库切换为admin
+	show tables
+	show collections  查看当前数据库中有哪些集合
+	db.system.version.find()  查看结合system.version中的文档
+
+
+
+
+
+
+
