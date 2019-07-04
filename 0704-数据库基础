@@ -91,7 +91,7 @@ mongodb
 	b.服务的启动(命令提示符)
 		命令提示符：win+r--cmd
 		mongod --dbapth d:\data
-		mongod --dbpath d:\data --logptah d:\data\mongo.log
+		mongod --dbpath d:\data --logpath d:\data\mongo.log
 		--dbpath  数据存放路径(文件夹)
 		--logptah 日志存放位置(文件)
 	c.检查服务和端口
