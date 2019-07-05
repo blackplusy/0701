@@ -1,0 +1,63 @@
+1.python的应用领域
+房产推荐
+a.爬虫--【58、链家、中原】--{地理位置，价格，环境，大小，楼层，朝向，交通，评论}
+b.数据分析--【影响好房子因素】--【光线、价格、地理位置】
+c.web网站--VIP--【tel、passwd、mail、wechat】
+d.行为分析--【喜好】--【vip】
+e.自动化测试
+f.自动化运维
+
+
+a.爬虫       8-13k
+b.数据分析   13k
+c.web开发    10-13k
+d.机器学习   18k
+e.自动化测试 13k
+f.自动化运维 8-13k
+
+2.python的安装
+建议:35、36
+安装:傻瓜安装(下一步)
+add Python to path 打勾
+
+3.python的开发工具
+pycharm
+eclipse+pydev
+sublime text
+vi/vim
+
+4.python的运行环境
+开发工具
+python自带idle
+命令提示符--python
+命令提示符--python 文件名
+
+5.python的输入和输出
+a.输出的应用场景
+b.python的输出
+c.输入的应用场景
+d.python的输入
+
+a.输出的应用场景
+	a1.淘宝上搜索lv返回的结果
+	a2.访问网页出现网页不存在(404)
+	a3.调试程序进行输出
+	a4.网站提示输入用户名、密码
+b.python的输出
+	b1.直接输出
+	b2.变量输出
+	b3.函数输出
+	b4.格式化输出
+c.输入的应用场景
+	c1.填写注册信息
+	c2.淘宝中输入搜索内容
+	c3.前后端交互
+d.python的输入
+	d1.input      python2中接受键盘传入的数字类型数据，python3中接受键盘传入字符类型数据
+	d2.raw_input  python2中接受键盘传入的字符类型数据，python3中已经废弃
+	type()  判断数据类型
+	int()   变量值转换为数字
+	str()   变量值转换为字符串
+
+
+
