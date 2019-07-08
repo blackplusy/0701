@@ -115,3 +115,42 @@ linux基础
 			ping windows的IP
 		windows:
 			ping linux的IP
+8.忘记密码
+	1.重启
+	2.e  进入启动菜单
+	3.e  编辑内核设置
+	4.选择kernel，按e，增加 1
+	5.回车
+	6.b
+	7.输入命令passwd，输入密码
+	8.exit
+
+9.目录操作
+	a.创建(mkdir)
+		mkdir a           当前目录下创建空目录a
+		mkdir /opt/b c    /opt目录下创建空目录b，当前目录下创建空目录c
+		mkdir "d  e"      当前目录下创建空目录d  e
+		注意:有特殊符号使用引号或者转义符\
+		mkdir f/g/h -p    创建级联目录f/g/h
+		补充:tree 树状显示目录结构
+	b.复制(cp)
+		注意:复制目录需要加-r或者-a
+		cp -r f a         复制当前目录下的f目录到a目录中(a目录存在)
+		cp -r f g         复制当前目录下的f目录为当前目录下的g目录(g目录不存在)
+	c.剪切/移动(mv)
+		mv f b            剪切当前目录下的f目录到b目录中(b目录存在)
+		mv g h            重命名g目录为h目录(h目录不存在)
+	d.删除
+		rmdir             删除空目录
+		rm -r h           删除目录h
+		rm -rf b          强制删除b目录
+
+	/opt
+	+-----A
+	|     +--A1
+	|     +--A2
+	|
+	+-----B          
+		  +--C
+		  +--D
+		  
