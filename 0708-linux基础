@@ -1,0 +1,26 @@
+linux基础
+1.常见操作系统平台
+	unix      mac os   ios   aix
+	linux     
+			  centos   redhat
+			  opensuse suse
+			  ubuntu   gentoo
+			  kali     backtrack 
+			  红旗     麒麟
+			  redstar
+	windows
+			  desktop
+			  	win7  winxp  win10  win8  ....   
+			  server
+			  	sever 03  08  12  16
+2.大数据、云、虚拟化
+	虚拟化
+		虚拟机：让运行在虚拟机中的系统认为自己运行在真实硬件上
+		vmware 运行稳定，速度慢
+		vbox   运行不稳定，速度快
+		kvm    linux中
+3.开源
+	github   gitlab
+	开源：源代码开放(不一定免费)
+	优点：发展快，方便学习
+	缺点:山寨，方便学习
