@@ -153,4 +153,40 @@ linux基础
 	+-----B          
 		  +--C
 		  +--D
-		  
+	mkdir A/A1 A/A2 B/C B/D -p
+	mkdir A/A{1,2} B/{C,D} -p
+10.文件操作
+	a.创建
+		touch  a   		当前目录下创建空文件a
+		touch  /opt/b   /opt目录下创建空文件b
+		重定向
+		>               		覆盖：删除之前所有内容放入新内容
+		echo heygor >zhenshuai  覆盖内容heygor到zhenshuai文件中，如果没有该文件，自动创建
+		>>                      追加:现有内容后追加新内容
+		echo zhenshuai >>heygor 追加内容到zhenshuai到heygor文件中，如果没有该文件，自动创建
+		1>                      正确信息写入文件中
+		2>                      错误信息写入文件中
+		&>                      所有信息写入到文件中
+		输出内容到终端 echo
+		vi/vim
+	b.复制(cp)
+		只能复制文件到目录中，不能复制文件到文件中
+		cp a b A               复制当前目录下a和b文件到A目录中(A目录存在)
+		cp 1.log 4.log         复制当前目录下1.log文件为当前目录下4.log文件(4.log目录不存在)
+	c.移动(mv)
+		 mv heygor A           剪切heygor文件到A目录中(A目录存在)
+		 mv zhenshuai pi       重命名zhenshuai文件为pi(pi目录不存在)
+	d.删除
+		rm b                   删除文件b
+		rm -f c                强制删除文件c
+		rm -rf *               删除当前目录下所有文件
+	e.查看
+		cat                    不分页显示文件内容
+		less                   分页显示文件内容，可以向上向下翻页，q退出
+		more                   分页显示文件内容，只能向下翻页，q退出
+		head                   显示文档前几行
+		head -3 install.log    查看install.log前3行
+		tail
+		tail -2 install.log    查看install.log后2行
+		vi/vim
+	f.修改
