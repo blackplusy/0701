@@ -178,7 +178,35 @@ linux基础2.txt
 		查看系统挂载情况
 	df -h
 		查看磁盘使用率
-
+	杀掉所有远程的连接
+	kill -9 `ps -ef |grep sshd |grep -v grep |grep -v sbin |awk -F " " '{print $2}'`
+10.rhel的软件安装
+	软件下载：推荐官网
+	软件包是在光盘的Server目录中
+	rhel的软件包都是以.rpm结尾
+	a.安装部署vsftpd服务
+		0>
+			安装操作系统
+			设置IP、主机名、绑定主机名
+			关闭防火墙、selinux
+		1>加载光驱
+		右键标签--设置--cd/dvd--使用iso映像文件、启动时连接、已连接--选择安装光盘
+		2>搜索光驱对应目录
+		输入mount命令找到type是iso9660的对应目录
+		注意:type 是iso9660的对应硬件就是光驱
+		3>目录切换到光盘的Server目录下
+			cd /media/RHEL_5.4\ i386\ DVD/Server/
+		4>搜索vsftpd相关软件
+			ls |grep vsftpd
+		5>安装软件
+			 rpm -ivh vsftpd-2.0.5-16.el5.i386.rpm
+		6>启动服务
+			service vsftpd start
+		7>测试
+			浏览器中输入ftp://linux的IP
+		8>共享文件
+			复制文件到/var/ftp
+		补充:win下磁盘映射
 
 
 
