@@ -1,0 +1,42 @@
+linux基础2.txt
+1.linux的网络设置
+	a.临时设置(ifconfig)
+	b.命令设置(setup)
+	c.修改配置文件设置
+	vim /etc/sysconfig/network-scripts/ifcfg-eth0
+	DEVICE=eth0                    设备名称
+	BOOTPROTO=static                 启动协议(dhcp[动态]、static[静态设置])
+	HWADDR=00:0c:29:43:97:c3       网卡的mac地址
+	ONBOOT=yes                     是否随开机启动而启动(yes随开机启动而启动no，不启动，需要开机后手动启动)
+	NETMASK=255.255.254.0          子网掩码
+	IPADDR=192.168.7.244           IP地址
+	TYPE=Ethernet                  上网类型
+	注意:修改完配置文件后，一定要重启网络服务
+	service network restart
+	补充:
+		ifup 	eth0   启动eth0网卡
+		ifdown 	eth0   关闭eth0网卡
+2.设置主机名
+	a.查看主机名
+		hostname
+	b.临时设置主机名(重启系统后失效)
+		hostname heygor.com.cn
+	c.配置文件设置主机名(重启系统后生效)
+		vim /etc/sysconfig/network
+		HOSTNAME=heygor.com.cn
+3.绑定主机名
+	vim /etc/hosts
+	增加：IP   主机名
+	192.168.7.134   heygor.com.cn
+4.selinux
+	 vim /etc/selinux/config
+	 SELINUX=disabled
+	 注意:重启系统后生效
+	 getenforce 	查看selinux状态
+	 setenforce 0   临时关闭selinux
+5.防火墙
+	service iptables start   开启防火墙
+	service iptables status  查看防火墙状态
+	service iptables stop    关闭防火墙
+
+
