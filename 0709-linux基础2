@@ -39,4 +39,35 @@ linux基础2.txt
 	service iptables status  查看防火墙状态
 	service iptables stop    关闭防火墙
 
+6.包、压缩文件、压缩包
+包：打包
+	包文件通常以.tar结尾
+	tar -cvf test.tar install.log* Desktop  创建包文件test.tar打包内容为install.log开头的文件或者目录和Desktop目录
+	tar -tvf test.tar                       查看包文件test.tar中打包的内容
+	tar -xvf test.tar                       解包包文件test.tar中的内容到当前目录下
+	tar -xvf test.tar -C /opt/              解包包文件test.tar到/opt目录下
+	注意:解包到指定目录需要加-C
+压缩文件：体积变小
+	du -sh install.log            查看install.log文件大小
+	gzip install.log              压缩文件install.log
+ 	gzip -l install.log.gz        查看压缩文件install.log.gz文件的压缩属性
+ 	gzip -d install.log.gz        解压压缩文件install	.log.gz到当前目录下
+压缩包：
+	先打包后压缩。压缩包文件通常以.tar.gz结尾或者以.tgz结尾
+	tar -cvf test1.tar install.log*
+	gzip test1.tar
+
+	tar -czvf test2.tar.gz install.log*  创建压缩包文件test2.tar.gz打包压缩内容为install.log开头的内容
+	tar -tzvf test2.tar.gz               查看压缩包文件test2.tar.gz的内容的文件属性信息
+	tar -xzvf test2.tar.gz               解压压缩包文件test2.tar.gz到当前目录下
+安装vm-tools
+	1.解压压缩文件到指定目录
+	2.进入到解压后的目录中
+	3.执行vmware-install.pl
+		./vmware-install.pl
+
+
+
+
+
 
