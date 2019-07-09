@@ -66,6 +66,71 @@ linux基础2.txt
 	3.执行vmware-install.pl
 		./vmware-install.pl
 
+7.用户和权限
+	/etc/passwd    用户配置信息
+	/etc/shadow    用户密码配置信息
+	/etc/group     组信息配置
+	a.用户
+		创建
+			useradd simon   添加用户simon
+			passwd  simon   给用户设置密码
+		修改
+			usermod -L simon 锁定simon用户
+			usermod -U simon 解锁simon用户
+		删除
+			userdel -r  simon 删除simon用户
+	b.权限
+		1>查看权限
+		ll install.log
+		-rw-r--r-- 1 root root 35236 07-08 10:36 install.log
+		2>文件属性信息
+			1:			文件类型  -普通文件 d目录
+			2-10:       文件权限
+			11:         文件节点
+			12：        文件拥有者
+			13：        文件拥有组
+			14：        文件大小
+			15：        最后修改时间
+			16：        文件名
+		3>linux中常见权限
+			r:读
+				目录:可以列表显示
+				文件:可以查看文件内容
+			w:写
+				目录：可以创建、重命名、删除文件
+				文件:可以修改文件内容
+			x:执行
+				目录:可以进入
+				文件:可执行(二进制文件或者脚本)
+		4>权限的分组
+			rw-          r--           r--
+			拥有者权限    拥有组权限    其他人权限
+		5>系统判断权限过程
+			a.判断用户是否为文件拥有者如果是，赋予拥有者权限
+			b.如果不是，判断用户是否为文件拥有组成员，如果是赋予拥有组权限
+			c.如果不是，赋予其他人权限
+			补充:id root  查看root用户的组信息
+		6.修改权限
+			chmod：直接修改权限
+				字符方式
+					u   拥有者
+					g   拥有组
+					o   其他人
+					a   所有人
+					chmod u+x install.log           拥有者增加执行权限
+					chmod g+x,o+x install.log       拥有组和其他人增加执行权限
+					chmod a-x install.log           所有用户取消执行权限
+				数字方式
+					r:4
+					w:2
+					x:1
+					-:0
+					chmod 777 install.log          所有用户拥有读写执行权限
+					chmod 000 install.log          所有用户没任何权限
+			chown：通过修改文件属主来修改权限
+					chown heygor install.log       修改文件拥有者heygor
+					chown :bin install.log         修改文件拥有组bin
+					chown root:root install.log    又该文件拥有者root拥有组root
 
 
 
