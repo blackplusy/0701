@@ -1,0 +1,83 @@
+命令总结
+who
+whoami
+pwd
+ls
+cd
+ping
+setup
+service
+ifconfig
+mkdir
+cp
+mv
+rm
+touch
+echo
+cat
+less
+more
+head
+tail
+vi(替换、搜索)
+find
+locate
+grep
+tar
+gzip
+du -sh
+useradd
+passwd
+usermod
+userdel
+id
+chmod
+chown
+top
+ps
+netstat
+lsof
+free
+vmstat
+kill
+mount
+df -h
+rpm 
+---------------------------------------------------------
+1.查看帮助
+man  官方手册
+	man ls  查看ls命令的官方手册
+info 说明文档
+	info ls 查看ls命令的说明文档
+--help  常见参数
+	ls --help
+2.软件安装
+a.常见软件架构
+	单机软件
+	b/s架构软件
+	c/s架构软件
+b.b/s架构后端组成
+	b1.操作系统
+		unix
+		linux
+		windows
+	b2.web服务器(提供网页服务)
+		apache  不支持java
+		nginx   轻量级web服务器，负载均衡、反向代理
+		tomcat  java
+		iis     微软
+	b3.数据库服务器(提供数据)
+		mysql
+		oracle
+		sqlserver
+c.常见搭配
+	操作系统              web服务器           数据库服务器
+	win                      iis             sqlserver/access/mysql
+	                       apache            mysql
+	                       tomcat            mysql/oracle
+	linux                  apache            mysql          (LAMP)
+	                       nginx             mysql          (LNMP)
+	                       tomcat            mysql/oracle
+
+
+
