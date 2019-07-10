@@ -79,5 +79,70 @@ c.常见搭配
 	                       nginx             mysql          (LNMP)
 	                       tomcat            mysql/oracle
 
+d.软件的安装
+	d1.软件安装方式
+		1>rpm安装         考虑依赖包
+		2>自动安装        不需要考虑安装包,安装简单
+			本地
+			网络
+		3>源码安装         自由度更高
+		4>二进制文件安装    简单易用
+	d2.自动安装(安装部署mysqld服务)
+		1>创建空目录
+			mkdir /yum
+		2>加载光驱
+			右键标签--设置--cd/dvd--使用iso映像文件--选择iso--确定
+		3>挂载光驱到刚才所创建的空目录中
+			mount -o loop /dev/scd0 /yum
+		4>设置自动安装配置(xxx.repo)
+			 cd /etc/yum.repos.d/
+			 vim rhel-debuginfo.repo
+				[rhel-debuginfo]                 组标签
+				name=test                        标识
+				baseurl=file:///yum/Server       自动安装程序到哪里去找软件
+				enabled=1                        是否开启启动安装(1是开启，0是关闭)
+				gpgcheck=0                       是否检查软件包(1开始，0是关闭)
+		5>清理yum缓存
+			yum clean all
+		6>搜索可以安装软件列表
+			yum list
+		7>搜索mysql相关软件
+			yum list |grep mysql*
+		8>安装mysql相关组件
+			yum install mysql* -y
+			注意:-y是自动安装依赖包
+		9>启动服务
+			service mysqld start
+		10>检查服务和端口
+			ps -ef |grep mysqld
+			netstat -an |grep 3306
+	d3.安装部署ecshop项目
+		echop项目环境
+		操作系统:rhel5
+		开发语言:php
+		web服务器:apache
+		数据库服务器:mysql
+		1>安装操作系统
+		2>设置IP、主机名、绑定主机名
+		3>关闭防火墙、关闭selinx
+		4>设置好yum
+		5>安装mysql相关组件
+			yum install mysql* -y
+		6>安装apache相关组件
+			yum install http* -y
+		7>安装php相关组件
+			yum install php* -y
+		8>启动mysql服务
+			service mysqld start
+		9>启动apache服务
+			service httpd start
+		10>下载ecshop项目到电脑中解压通过winscp传入linux的/var/www/html中
+		11>修改ecshop目录权限
+			chmod -R 777 /var/www/html/ecshop
+		12>设置mysql的密码
+			mysqladmin -u root password 'test'
+			mysql的管理员root设置密码test
+		13>浏览器中输入linux的ip/ecshop
+
 
 
