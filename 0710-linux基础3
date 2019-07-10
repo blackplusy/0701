@@ -145,4 +145,36 @@ d.软件的安装
 		13>浏览器中输入linux的ip/ecshop
 
 
+---------------------------------------------------------------------------
+e.二进制文件的安装
+	e1.rhel中mongodb的安装和部署
+		1>mongodb官网下载对应版本的压缩包
+		2>把下载后的软件包传入linux中(winscp)
+		3>解压压缩包
+			tar -xzvf mongodb-linux-i686-3.0.15.tgz
+			补充:解压后的目录建议重命名
+		4>设置环境变量
+			/root/.bashrc
+			/root/.bash_profile(推荐)
+			/etc/profile
+			在PATH和export PATH中间增加 mongodb的bin目录的路径
+			PATH=$PATH:$HOME/bin:/root/mongodb/bin
+			export PATH
+			unset USERNAME
+		5>使环境变量生效
+			source .bash_profile
+		补充：
+			启动mongodb服务
+				1>创建空目录/data
+				2>mongod --dbpath /data --logpath /data/mongo.log --fork
+					mongod  	mongodb的主服务
+					--dbpath 	mongodb的数据存放路径
+					--logpath   日志存放位置
+					--fork      后台执行
+				3>查看进程和端口
+					ps -ef |grep mongod
+					netstat -an |grep 27017
+
+
+
 
