@@ -174,6 +174,54 @@ e.二进制文件的安装
 				3>查看进程和端口
 					ps -ef |grep mongod
 					netstat -an |grep 27017
+	e2.linux中jdk的配置
+		jdk  java的开发环境
+		jre  java的运行环境
+		1>下载jdk(oracle官网)
+			操作系统
+				32位    i386  i586  i686
+				64位    x64   x86_64
+		2>查看当前系统中java版本
+			java -version
+		3>把下载的软件包传入linux中
+		4>解压下载好的软件包
+			tar -xzvf jdk-7u7-linux-i586.tar.gz
+		5>设置环境变量
+			vim ~/.bash_profile增加内容：
+			export JAVA_HOME=/root/jdk
+				java的软件所在目录
+			export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+				添加java的命令所在路径到环境变量中
+			export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+				添加java相关的库到环境变量中
+		6>使环境变量生效
+			source ~/.bash_profile
+		7>查看当前系统中java版本
+			java -version
+	e3.tomcat的安装和部署
+		1>下载tomcat(注意版本)
+			tomcat 7
+		2>把tomcat压缩包传入linux中
+		3>解压tomcat软件包
+		4>tomcat常见目录作用
+			bin:    存放linux中命令位置
+			lib：   存放库文件的位置
+			logs:   存放日志的位置
+			temp：  存放临时文件位置
+			conf:   存放配置文件位置
+			webapps：项目存放位置
+		5>启动tomcat服务
+			51>进入到tomcat的bin文件夹
+			cd /root/apache-tomcat-7.0.77/bin/
+			52>执行目录中startup.sh
+			./startup.sh
+		6>检查tomcat服务
+			ps -ef |grep tomcat
+			netstat -an |grep 8080
+			浏览器中输入linuxip:8080
+			
+
+
 
 
 
