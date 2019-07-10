@@ -219,7 +219,42 @@ e.二进制文件的安装
 			ps -ef |grep tomcat
 			netstat -an |grep 8080
 			浏览器中输入linuxip:8080
+	e4.tenroder项目部署
+		1>安装配置好jdk
+		2>安装配置好tomcat
+		3>安装配置好mysql
+		4>删除tomcat的webapps中所有文件
+			rm -rf apache-tomcat-7.0.77/webapps/*
+		5>在win中解压tenorder压缩包
+		6>把解压后的tenorder文件夹传入tomcat的webapps中
+		7>导入数据库
+			71>进入到tenorder.sql所在目录
+			 	cd apache-tomcat-7.0.77/webapps/tenorder/
+			72>登陆mysql数据库
+				mysql -u root -p
+			73>创建数据库ten
+				create database ten;
+			74>切换到ten数据库
+				use ten;
+			75>导入tenorder.sql文件
+				source tenorder.sql;
+		8>根据实际情况修改数据库信息(参考安装文档)
+			vim WEB-INF/classes/database.properties
+			注意:用户名、密码、数据库IP、数据库名字
+		9>重启tomcat服务
+			91>进入到tomcat的bin目录下
+			 cd apache-tomcat-7.0.77/bin/
+			92>执行shutdown.sh
+				./shutdown.sh
+			93>执行startup.sh
+				./startup.sh
+		10>浏览器中输入
+			linux的ip:8080/tenorder
 			
+
+
+
+
 
 
 
