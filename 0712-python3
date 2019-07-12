@@ -64,4 +64,24 @@ b.文件操作实例
 
 	3.追加内容
 	open函数的第三个参数是a，代表追加，注意换行
-	
+c.文件操作实例
+	1.read readline readlines区别
+	read  		读取整个文件
+	readline    读取下一行
+	readlines   读取文件到一个迭代器中供我们遍历
+	2.例子
+	d:\创建文件test.txt 内容
+	名字     电话
+	heygor 18028768679
+	o8ma   18888888888
+	判断18888888888是否在文件中
+d.csv文件操作	
+	1.csv文件是什么
+		逗号分隔开值，文本以纯文本形式存储表格数据
+	2.csv文件的读写
+		csv文件的读
+		使用python处理excel文件，需要导入excel模块(系统自带)
+		打印出来数据是列表
+		csv文件的写
+		python生成的excel文件兼容csv的话，创建参数就必须有dialect='excel'
+		
