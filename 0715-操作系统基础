@@ -1,0 +1,60 @@
+D:\\测试用软件\ISO
+D:\\测试用软件\vmware(vm)
+====================================================
+HeyGor
+18028768679
+914338492
+====================================================
+学习内容：
+1.常见的软件架构
+2.URL组成
+3.抓包
+
+1.常见的软件架构
+微信       b/s  c/s
+QQ         c/s
+淘宝       b/s   c/s
+支付宝     b/s   c/s
+地图       b/s   c/s
+百度       b/s   c/s
+农药       c/s   
+QQ音乐     b/s   c/s
+滴滴       b/s   c/s
+大麦       b/s   c/s
+优酷       b/s   c/s
+真三国无双 c/s
+a.单机软件
+不需要网络就可以执行的应用程序
+	hacker con
+	def    con
+b.b/s架构软件
+	b:浏览器
+		IE        QQ   360   傲游  世界之窗  搜狗
+		firefox   测试 
+		chrome    开发
+		safari    
+	s:服务器(性能非常牛逼的电脑)
+		web服务器
+		数据库服务器
+c.c/s架构软件
+	c:客户端
+		pc端   (台式、笔记本。。。)
+		移动端 (手机、ipad、移动终端)
+	s:服务器(性能非常牛逼的电脑)
+2.URL组成
+a.url
+	统一资源定位器
+	https://s.taobao.com/search?q=lv&imgfile=&commend=all&ssid=s5-e&search_type=item&sourceId=tb.index&spm=a21bo.2017.201856-taobao-item.1&ie=utf8&initiative_id=tbindexz_20170306
+	https://sports.qq.com:80/kbsweb/game.htm?mid=100000:52905278
+	1>协议
+	2>域名
+	3>端口
+	4>虚拟目录
+	5>访问文件
+	6>访问参数
+b.协议
+c.域名
+d.端口
+
+
+
