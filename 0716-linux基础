@@ -43,3 +43,43 @@
 	c.测试
 		win:		ping linux的IP
 		linux：     ping win的IP
+7.补充:关闭服务
+	/etc/init.d/NetworkManager stop  关闭NetworkManager
+8.目录操作
+	进入到/opt目录下
+	a.创建目录(mkdir)
+		mkdir a 
+			当前目录下创建空目录a
+		mkdir b /opt/c
+			当前目录下创建空目录b并且在/opt目录下创建空目录c
+		mkdir "d  e"
+			创建空目录d  e，注意：特殊符号使用引号或者转义符\
+		mkdir  -p f/g/h
+			创建级联目录f/g/h
+	b.删除目录(rmdir、rm -r)
+		rm -r f
+			删除目录f
+		rm -rf f
+			强制删除目录f
+		rm -rf /opt/b
+			强制删除/opt目录下的b目录
+	c.复制目录(cp)
+		注意:复制目录时候需要加-r
+		cp -r a m\ n  
+			复制当前目录下a目录到当前目录下的m n目录中(m n目录存在)
+		cp -r a c
+			复制当前目录下的目录位当前目录下的c目录(c目录不存在)
+	d.移动目录(mv)
+		mv m\ n a 
+			剪切当前目录下的m n目录到a目录中(a目录存在)
+		mv a   b
+			重命名当前目录下a目录位b目录(b目录不存在)
+	/opt
+	+---------A
+	|         +---A1
+	|         +---A2
+	|
+	+---------B
+			  +--C
+			  +--D
+
