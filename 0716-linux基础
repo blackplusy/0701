@@ -174,3 +174,15 @@
 			替换
 			:1,$s/a/b/    全文替换a为b，只替换每行第一个
 			:10s/a/b/g    第10行搜索a替换为b，全部替换(g)
+10.修改配置文件的方式修改IP
+	vim /etc/sysconfig/network-scripts/ifcfg-eth0
+	DEVICE       设备名称
+	HWADDR       网卡mac地址
+	TYPE         上网类型
+	ONBOOT       网卡是否随开机启动而启动,yes是，no否 
+	NM_CONTROLLED=no  是否为NetworkManager管理，yes是，no否
+	BOOTPROTO=static  启动协议(dhcp\static)
+	IPADDR=xxxxx      IP地址
+	NETMASK=xxxxx     子网掩码
+	重启网络服务
+	service network restart
