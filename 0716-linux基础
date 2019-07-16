@@ -1,0 +1,45 @@
+1.虚拟机
+	vmware 稳定 速度慢
+	vbox   速度快 不稳定
+	kvm    
+2.常见目录
+3.终端
+4.常见命令
+	who
+	whoami
+	pwd
+	ls
+	cd
+5.帮助
+	man
+	info
+6.网络设置
+	交换机通信
+		1>硬件没问题
+		2>IP地址同一网段
+	a.linux的网络设置
+		a1.查看linux的IP地址
+			注意:eth0是linux中默认第一块网卡
+			ifconfig      查看系统中的网卡信息
+			ifconfig eth0 查看linux第一块网卡信息
+		a2.win中搜索一个和本地网卡同一网段的IP
+			win+r--cmd--ipconfig
+			--ping 192.168.7.x(1-254)   [192.168.7.49]
+			注意:目标不可达或者无法访问等说明该IP没人使用，可以用于设置linux的IP
+		a3.设置IP的方式
+			临时设置IP(重启后失效)
+				ifconfig eth0 192.168.7.49
+				注意：重启网络(service network restart)
+			命令设置IP(重启后生效)
+				setup--网络设置--edit devices--eth0--名称、设备不要改动、取消dhcp(空格)、设置IP--ok--save--save&quit--退出--service network restart
+				注意：获取IP的方式(dhcp:动态获取、static:静态设置)
+			修改配置文件(重启后生效)
+	b.虚拟机的网络设置
+		右键标签--设置--网络适配器--已连接、启动时连接、桥接模式、复制物理网络连接状态
+		虚拟机的网络设置
+		b1.桥接      在已有网络上新增一网络，可以和局域网中其他主机进行通信
+		b2.仅主机    客户机和宿主机的私有通道，无法和局域网中其他主机进行通信
+		b3.网络地址转换 通过网络地址转换进行上网，无法和局域网中其他主机进行通信
+	c.测试
+		win:		ping linux的IP
+		linux：     ping win的IP
