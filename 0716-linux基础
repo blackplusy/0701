@@ -82,4 +82,56 @@
 	+---------B
 			  +--C
 			  +--D
+	mkdir -p A/A1 A/A2 B/C B/D
+	mkdir -p A/A{1,2} B/{C,D}
+    su - root
+9.文件操作
+	创建
+		touch(创建空文件)
+			touch a
+				当前目录下创建空文件a
+			touch /opt/b
+				/opt目录下创建空文件b
+		重定向
+			>   覆盖，把原有内容全部删除，放入新内容,如果没有该文件，自动创建
+				echo heygor>zhenshuai
+			>>  追加，原有内容下一行放入新内容，如果没有该文件，自动创建
+				echo zhenshuai>>heygor
+			1>  正确信息写入文件
+			2>  错误信息写入文件
+			&>  所有信息都写入文件
+			补充:echo  打印
+		vi/vim
+	删除(rm)
+		rm 1.log
+			删除当前目录下的1.log文件
+		rm -f 2.log
+			强制删除当前目录下2.log文件
+		rm -rf *
+			删除当前目录下所有文件
+	复制(cp)
+		cp e a
+			复制当前目录下的e文件到a目录中(a目录存在)
+		cp kouniqiwa wataxiwa
+			复制当前目录下的kouniqiwa文件到当前目录下的wataxiwa(wataxiwa目录不存在)
+	移动(mv)
+		mv a b d
+			剪切当前目录下的a和b文件到d目录中(d目录存在)
+		mv c f
+			重命名当前目录下c为当前目录下f(f目录不存在)
+	查看
+		cd ~
 
+		cat   	不分页显示文件内容
+			cat install.log
+		less    分页显示文件内容，可以向上向下翻页,按q退出
+			less install.log
+		more    分页显示文件内容，只能向下翻页,按q退出
+			more install.log
+		head    显示文件前几行
+			head -3 install.log 查看文件前3行
+		tail    显示文件后几行
+			tail -2 install.log 查看文件后2行
+		vi
+
+	修改
