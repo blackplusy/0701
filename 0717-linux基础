@@ -150,14 +150,33 @@ vi
 		head -7 install.log|tail -1     查看install.log文件中第7行内容
 5.日常管理
 	top         监控系统资源
-	ps
-	free
-	netstat
-	lsof
-	vmstat
-	chkconfig
-	mount
-
+	ps          查看系统中所有进程
+		ps -ef |grep sshd    查看sshd进程是否正常运行(sshd 远程连接linux的服务)
+	kill
+		-9   pid   暴力杀  
+		-15  pid   温柔杀
+	free  -m     查看内存信息      
+	netstat -an    查看电脑中开放的所有端口
+		    -ntlup
+	lsof -i:22     查看22号端口的连接信息
+	vmstat       监控系统资源
+	chkconfig    开机启动列表
+	chkconfig --level 35 NetworkManager off  关闭NetworkManager的开机启动服务
+	chkconfig --level 35 iptables off       关闭防火墙的开机启动服务
+	补充:防火墙服务
+		iptables     IPv4 防火墙
+		service iptables status   查看防火墙状态
+		service iptables stop     关闭防火墙
+		service iptables start    启动防火墙
+		ip6tables    IPv6 防火墙
+	mount   查看系统挂载情况
+	df -h   查看磁盘的使用率	
+	补充：linux的运行级别
+	配置文件:vim /etc/inittab
+	init 0    关机
+	init 3    进入到命令模式
+	init 5    进入到图形模式
+	init 6    重启
 
 
 
