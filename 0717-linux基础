@@ -177,6 +177,44 @@ vi
 	init 3    进入到命令模式
 	init 5    进入到图形模式
 	init 6    重启
+6.linux的rhel中的软件安装
+	1.rpm安装
+	2.自动安装
+	3.源码安装
+	4.二进制文件安装
+
+a.rpm安装
+	注意:软件下载建议官网
+	linux中所有的安装包都是以.rpm结尾
+	rhel5中所有软件包在光盘的Server目录下
+	rhel6中所有软件包在光盘的Packages中
+	1>安装操作系统
+	2>设置IP
+	3>设置主机名
+	4>绑定主机名
+	5>关闭防火墙
+	6>关闭selinux
+	7>加载光驱
+		右键标签--设置--cd/dvd--启动时连接、已连接、使用iso映像文件
+	8>查看光盘访问目录
+		type是iso9660的对应目录，光盘
+	9>进入到光盘目录的Packages目录
+		cd /media/RHEL-6.6\ Server.x86_64/Packages/
+	10>搜索vsftpd相关软件
+		ls |grep vsftpd
+	11>安装vsftpd软件包
+		rpm -ivh vsftpd-2.2.2-12.el6_5.1.x86_64.rpm
+	12>启动vsftpd服务
+		service vsftpd start
+	13>测试
+		浏览器中输入:ftp：//linux的IP
+		linux中复制一个文件到/var/ftp中进行共享
+	补充:ftp服务映射为一个网络磁盘
+		win:计算机--添加一个网络位置--自定义网络位置--输入ftp：//linux的IP
+
+补充:selinux的配置(重启系统后生效)【关闭selinux】
+	vim /etc/selinux/config
+	SELINUX=disabled
 
 
 
