@@ -67,6 +67,71 @@ vi
 		查看压缩包打包压缩内容
 	tar -xzvf test2.tgz
 		解压压缩包到当前目录下
+3.用户和权限
+	用户
+		/etc/passwd   用户配置文件
+		/etc/shadow   密码配置文件
+		/etc/group    组配置文件
+		创建
+			useradd simon  创建用户simon
+			passwd  simon  设置simon的密码
+		修改
+			usermod -L simon  锁定用户simon
+			usermod -U simon  解锁用户simon
+		删除
+			userdel -r simon  删除用户simon
+	权限
+		a.查看权限(ls -l)
+			ll install.log
+			-rw-r--r--. 1 root root 64399 7月  16 16:42 install.log
+		b.文件属性信息
+			1:文件类型   d:目录  -:普通文件
+			2-10:权限
+			11:文件节点
+			12:文件拥有者
+			13:文件拥有组
+			14.文件大小
+			15.最后修改时间
+			16.文件名
+		c.常见权限
+			r:读
+				文件:可以查看文件内容
+				目录:可以列表文件
+			w:写
+				文件:可以修改文件内容
+				目录:可以创建、重命名、删除文件
+			x:执行
+				文件:可以执行(二进制文件或者脚本文件)
+				目录:可以进入
+		d.权限的分组
+			rw-            r--          r--
+			拥有者权限     拥有组权限    其他人权限
+		e.系统判断权限的过程
+			1.判断用户是否为文件拥有者，如果是赋予拥有者权限
+			2.判断用户是否为拥有组成员，如果是赋予拥有组权限
+			3.如果都没满足条件，赋予其他人权限
+		f.修改权限
+			1.chmod(直接修改权限)
+				字符方式
+					u   拥有者
+					g   拥有组
+					o   其他人
+					a   所有人
+					chmod u+x install.log        拥有者增加执行权限
+					chmod g+x,o+x install.log    拥有组、其他人增加执行权限
+					chmod a-x install.log        所有人取消执行权限
+				数字方式
+					r:4
+					w:2
+					x:1
+					-:0
+					chmod 777 install.log        所有人拥有读写执行权限
+					chmod 000 install.log        所有人取消读写执行权限
+			2.chown(通过修改文件属主修改权限)
+				chown heygor install.log         修改文件拥有者为heygor
+				chown :bin install.log           修改文件拥有组为bin
+				chown root:root install.log      修改文件拥有者和拥有组为root
+
 
 
 
