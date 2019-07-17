@@ -1,0 +1,75 @@
+网络设置
+ifconfig
+setup
+ping
+service
+目录操作
+mkdir
+rm
+cp
+mv
+文件操作
+touch
+echo
+cat
+less
+more
+head
+tail
+vi
+=========================================
+1.安装部署系统后需要做的事
+	a.安装操作系统
+	b.设置IP
+	c.设置主机名
+		1>查看主机名
+			hostname
+		2>设置主机名
+			21>临时设置(重启系统后失效)
+				hostname heygor.zelin.com
+			22>永久设置(重启系统后生效)
+				vim /etc/sysconfig/network
+				NETWORKING=yes
+				HOSTNAME=heygor.zelin.com
+	d.绑定主机名
+		绑定IP和主机名
+		vim /etc/hosts
+		增加内容：
+		192.168.7.49  heygor.zelin.com
+		linux的IP     linux的主机名
+		补充:hosts文件作用，可以做临时的DNS解析
+2.包、压缩文件、压缩包
+包:打包包文件通常以.tar结尾
+	tar -cvf test.tar anaconda-ks.cfg install.log*
+		创建包文件test.tar，打包内容为anaconda-ks.cfg和install.log开头的所有文件
+	tar -tvf test.tar
+		查看包文件test.tar的打包内容文件属性信息
+	tar -xvf test.tar
+		解包包文件到当前目录下
+	tar -xvf test.tar -C /opt/
+		解包包文件到/opt目录下(指定目录需要加-C)
+压缩文件:文件体积减小
+	du -sh install.log
+		查看install.log文件大小
+	gzip install.log
+		压缩文件install.log
+	gzip -l install.log.gz
+		查看压缩文件压缩属性信息
+	gzip -d install.log.gz
+		解压压缩文件到当前目录
+压缩包：先打包后压缩，压缩包文件通常以.tar.gz结尾或者以.tgz结尾
+	tar -cvf test1.tar install.log*
+	gzip test1.tar
+	-----------------------------------
+	tar -czvf test2.tgz install.log*
+		创建压缩包文件tes2.tgz,打包压缩内容为install.log开头的所有文件
+	tar -tzvf test2.tgz
+		查看压缩包打包压缩内容
+	tar -xzvf test2.tgz
+		解压压缩包到当前目录下
+
+
+
+
+
+
