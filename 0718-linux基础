@@ -165,4 +165,59 @@ c.ecshop项目环境搭建
 		ps -ef |grep mongod
 		mongodb的端口: 27017
 		netstat -an |grep 27017
+2.jdk的安装和配置
+	a.下载jdk
+		建议:oracle官网下载
+	b.通过winscp把下载好的jdk软件包传入linux中
+	c.解压压缩包文件
+		tar -xzvf jdk-7u80-linux-x64.tar.gz
+	d.重命名解压后的目录
+		mv xxxx  jdk
+	e.查看java的版本信息
+		java -version
+	f.设置环境变量
+		jdk:java的开发环境
+		jre:java的运行环境
+		在~/.bash_profile中PATH和export PATH之间添加内容
+		linux中jdk软件所在目录
+		export JAVA_HOME=/root/jdk
+		java的常见命令所在目录
+		export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+		java的常见的库所在目录
+		export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+	g.使环境变量生效
+		source .bash_profile
+	h.查看java的版本信息
+		java -version
+3.tomcat的安装和配置
+	tomcat7   jdk 1.7
+	tomcat8   jdk 1.8
+	a.软件下载
+		https://tomcat.apache.org/download-70.cgi
+	b.把tomcat文件传入linux中
+	c.解压tomcat压缩包
+		tar -xzvf apache-tomcat-7.0.77
+	d.tomcat常见目录简介
+		bin     存放tomcat命令位置
+		lib     库文件存放位置
+		logs    日志文件存放位置
+		conf    配置文件所在位置
+		temp    临时文件所在位置
+		webapps web项目所在位置
+	e.启动tomcat服务
+		进入到tomcat的bin目录
+		cd /root/apache-tomcat-7.0.77/bin/
+		执行startup.sh
+		./startup.sh
+	f.检查服务和端口
+		 ps -ef |grep tomcat
+		 netstat -an |grep 8080
+		 浏览器中输入http://linux的IP:8080出现tomcat欢迎页面
+
+
+
+
+
+
+
 
