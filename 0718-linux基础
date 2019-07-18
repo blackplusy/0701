@@ -89,6 +89,45 @@ b.自动安装
 		mysql的端口:  3306
 			netstat -an |grep 3306
 		mysqld的进程: mysqld
+			ps -ef |grep mysqld
+c.ecshop项目环境搭建
+	操作系统:       rhel 6.6
+	开发语言:	   php
+	web服务器:      apache(httpd)
+	数据库服务器:    mysqld
+	1>安装操作系统
+	2>设置IP
+	3>设置主机名
+	4>绑定主机名
+	5>关闭防火墙
+	6>关闭selinux
+	7>配置好yum
+	8>安装php相关软件
+		yum install php* -y
+	9>安装apache相关软件
+		yum install http* -y
+	10>安装mysql相关软件
+		yum install mysql* -y
+	11>启动软件进行测试
+		service mysqld start
+		service httpd  start
+		通过浏览器输入http://linux的IP可以看到apache欢迎页面
+	12>设置mysql管理员的密码
+		mysqladmin -u root password 'test'
+		mysql的管理员root设置的密码是test
+	13>把ecshop.zip在win下面解压，通过winscp传入/var/www/html
+	14>设置ecshop目录的权限为777
+		chmod -R 777 /var/www/html/ecshop
+	15>浏览器中输入
+		http://linux的ip/ecshop  根据提示进行安装
+	注意:如果出现timezone报错，参考https://jingyan.baidu.com/article/574c52193092e76c8c9dc145.html
+		localhost==127.0.0.1==电脑本机
+		数据库主机   localhost
+		端口号       3306
+		用户名       root
+		密码         test
+		数据库名     点搜(test)
+
 
 
 
