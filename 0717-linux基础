@@ -1,0 +1,251 @@
+网络设置
+ifconfig
+setup
+ping
+service
+目录操作
+mkdir
+rm
+cp
+mv
+文件操作
+touch
+echo
+cat
+less
+more
+head
+tail
+vi
+=========================================
+1.安装部署系统后需要做的事
+	a.安装操作系统
+	b.设置IP
+	c.设置主机名
+		1>查看主机名
+			hostname
+		2>设置主机名
+			21>临时设置(重启系统后失效)
+				hostname heygor.zelin.com
+			22>永久设置(重启系统后生效)
+				vim /etc/sysconfig/network
+				NETWORKING=yes
+				HOSTNAME=heygor.zelin.com
+	d.绑定主机名
+		绑定IP和主机名
+		vim /etc/hosts
+		增加内容：
+		192.168.7.49  heygor.zelin.com
+		linux的IP     linux的主机名
+		补充:hosts文件作用，可以做临时的DNS解析
+2.包、压缩文件、压缩包
+包:打包包文件通常以.tar结尾
+	tar -cvf test.tar anaconda-ks.cfg install.log*
+		创建包文件test.tar，打包内容为anaconda-ks.cfg和install.log开头的所有文件
+	tar -tvf test.tar
+		查看包文件test.tar的打包内容文件属性信息
+	tar -xvf test.tar
+		解包包文件到当前目录下
+	tar -xvf test.tar -C /opt/
+		解包包文件到/opt目录下(指定目录需要加-C)
+压缩文件:文件体积减小
+	du -sh install.log
+		查看install.log文件大小
+	gzip install.log
+		压缩文件install.log
+	gzip -l install.log.gz
+		查看压缩文件压缩属性信息
+	gzip -d install.log.gz
+		解压压缩文件到当前目录
+压缩包：先打包后压缩，压缩包文件通常以.tar.gz结尾或者以.tgz结尾
+	tar -cvf test1.tar install.log*
+	gzip test1.tar
+	-----------------------------------
+	tar -czvf test2.tgz install.log*
+		创建压缩包文件tes2.tgz,打包压缩内容为install.log开头的所有文件
+	tar -tzvf test2.tgz
+		查看压缩包打包压缩内容
+	tar -xzvf test2.tgz
+		解压压缩包到当前目录下
+3.用户和权限
+	用户
+		/etc/passwd   用户配置文件
+		/etc/shadow   密码配置文件
+		/etc/group    组配置文件
+		创建
+			useradd simon  创建用户simon
+			passwd  simon  设置simon的密码
+		修改
+			usermod -L simon  锁定用户simon
+			usermod -U simon  解锁用户simon
+		删除
+			userdel -r simon  删除用户simon
+	权限
+		a.查看权限(ls -l)
+			ll install.log
+			-rw-r--r--. 1 root root 64399 7月  16 16:42 install.log
+		b.文件属性信息
+			1:文件类型   d:目录  -:普通文件
+			2-10:权限
+			11:文件节点
+			12:文件拥有者
+			13:文件拥有组
+			14.文件大小
+			15.最后修改时间
+			16.文件名
+		c.常见权限
+			r:读
+				文件:可以查看文件内容
+				目录:可以列表文件
+			w:写
+				文件:可以修改文件内容
+				目录:可以创建、重命名、删除文件
+			x:执行
+				文件:可以执行(二进制文件或者脚本文件)
+				目录:可以进入
+		d.权限的分组
+			rw-            r--          r--
+			拥有者权限     拥有组权限    其他人权限
+		e.系统判断权限的过程
+			1.判断用户是否为文件拥有者，如果是赋予拥有者权限
+			2.判断用户是否为拥有组成员，如果是赋予拥有组权限
+			3.如果都没满足条件，赋予其他人权限
+		f.修改权限
+			1.chmod(直接修改权限)
+				字符方式
+					u   拥有者
+					g   拥有组
+					o   其他人
+					a   所有人
+					chmod u+x install.log        拥有者增加执行权限
+					chmod g+x,o+x install.log    拥有组、其他人增加执行权限
+					chmod a-x install.log        所有人取消执行权限
+				数字方式
+					r:4
+					w:2
+					x:1
+					-:0
+					chmod 777 install.log        所有人拥有读写执行权限
+					chmod 000 install.log        所有人取消读写执行权限
+			2.chown(通过修改文件属主修改权限)
+				chown heygor install.log         修改文件拥有者为heygor
+				chown :bin install.log           修改文件拥有组为bin
+				chown root:root install.log      修改文件拥有者和拥有组为root
+4.搜索和管道
+	a.搜索
+		find    搜索文件
+			find /etc -name  conf       /etc目录下搜索名字为conf的文件
+			find /etc -name *.conf      /etc目录下搜索名字以conf结尾的文件
+		locate  搜索文件
+			locate passwd               系统中搜索passwd文件
+		updatedb刷新系统数据库
+		grep    搜索内容
+			grep root /etc/passwd       /etc/passwd文件中搜索root关键字的行
+			grep ^r /etc/passwd         /etcpasswd文件中r开头的行的内容
+			grep login$ /etc/passwd     /etc/passwd文件中搜索login结尾的内容
+	b.管道
+		|   前面的输出作为后面的输入
+		ls /etc/ | grep ^a              /etc目录下搜索以a开头的文件
+		cat /etc/passwd | grep root      /etc/passwd文件中搜索root关键字的行
+		head -7 install.log|tail -1     查看install.log文件中第7行内容
+5.日常管理
+	top         监控系统资源
+	ps          查看系统中所有进程
+		ps -ef |grep sshd    查看sshd进程是否正常运行(sshd 远程连接linux的服务)
+	kill
+		-9   pid   暴力杀  
+		-15  pid   温柔杀
+	free  -m     查看内存信息      
+	netstat -an    查看电脑中开放的所有端口
+		    -ntlup
+	lsof -i:22     查看22号端口的连接信息
+	vmstat       监控系统资源
+	chkconfig    开机启动列表
+	chkconfig --level 35 NetworkManager off  关闭NetworkManager的开机启动服务
+	chkconfig --level 35 iptables off       关闭防火墙的开机启动服务
+	补充:防火墙服务
+		iptables     IPv4 防火墙
+		service iptables status   查看防火墙状态
+		service iptables stop     关闭防火墙
+		service iptables start    启动防火墙
+		ip6tables    IPv6 防火墙
+	mount   查看系统挂载情况
+	df -h   查看磁盘的使用率	
+	补充：linux的运行级别
+	配置文件:vim /etc/inittab
+	init 0    关机
+	init 3    进入到命令模式
+	init 5    进入到图形模式
+	init 6    重启
+6.linux的rhel中的软件安装
+	1.rpm安装
+	2.自动安装
+	3.源码安装
+	4.二进制文件安装
+
+a.rpm安装
+	注意:软件下载建议官网
+	linux中所有的安装包都是以.rpm结尾
+	rhel5中所有软件包在光盘的Server目录下
+	rhel6中所有软件包在光盘的Packages中
+	1>安装操作系统
+	2>设置IP
+	3>设置主机名
+	4>绑定主机名
+	5>关闭防火墙
+	6>关闭selinux
+	7>加载光驱
+		右键标签--设置--cd/dvd--启动时连接、已连接、使用iso映像文件
+	8>查看光盘访问目录
+		type是iso9660的对应目录，光盘
+	9>进入到光盘目录的Packages目录
+		cd /media/RHEL-6.6\ Server.x86_64/Packages/
+	10>搜索vsftpd相关软件
+		ls |grep vsftpd
+	11>安装vsftpd软件包
+		rpm -ivh vsftpd-2.2.2-12.el6_5.1.x86_64.rpm
+	12>启动vsftpd服务
+		service vsftpd start
+	13>测试
+		浏览器中输入:ftp：//linux的IP
+		linux中复制一个文件到/var/ftp中进行共享
+	补充:ftp服务映射为一个网络磁盘
+		win:计算机--添加一个网络位置--自定义网络位置--输入ftp：//linux的IP
+
+补充:selinux的配置(重启系统后生效)【关闭selinux】
+	vim /etc/selinux/config
+	SELINUX=disabled
+
+IP：网络之间互联协议
+	IP地址通常32位的二进制数，被分为4个8位2进制数据(256)
+	192.168.6.20                 IP地址
+	255.255.255.0                子网掩码
+	192.168.6.1                  网关
+	192.168.6.0					 网络号
+	192.168.6.255                广播地址
+	IP地址类型
+	A类：10.0.0.0-10.255.255.255
+	B类：172.16.0.0-172.31.255.255
+	C类：192.168.0.0-192.168.255.255(常用)       
+	IP地址表示方法
+	11000000.10101000.00000110.00010100(192.168.6.20)
+	11111111.11111111.11111111.00000000(255.255.255.0)
+	--------------------------------------------------
+	11000000.10101000.00000110.00000000(192.168.6.0)
+	子网掩码是结合IP地址计算得到网络地址
+	网络地址计算方法
+		1.将IP地址和子网掩码换算成二进制
+		2.将两者进行与运算，得到网络地址  (两个都是1，结果才是1，其他都是0)
+
+
+
+
+
+
+
+
+
+
+
+
+

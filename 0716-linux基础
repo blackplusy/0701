@@ -43,3 +43,146 @@
 	c.测试
 		win:		ping linux的IP
 		linux：     ping win的IP
+7.补充:关闭服务
+	/etc/init.d/NetworkManager stop  关闭NetworkManager
+8.目录操作
+	进入到/opt目录下
+	a.创建目录(mkdir)
+		mkdir a 
+			当前目录下创建空目录a
+		mkdir b /opt/c
+			当前目录下创建空目录b并且在/opt目录下创建空目录c
+		mkdir "d  e"
+			创建空目录d  e，注意：特殊符号使用引号或者转义符\
+		mkdir  -p f/g/h
+			创建级联目录f/g/h
+	b.删除目录(rmdir、rm -r)
+		rm -r f
+			删除目录f
+		rm -rf f
+			强制删除目录f
+		rm -rf /opt/b
+			强制删除/opt目录下的b目录
+	c.复制目录(cp)
+		注意:复制目录时候需要加-r
+		cp -r a m\ n  
+			复制当前目录下a目录到当前目录下的m n目录中(m n目录存在)
+		cp -r a c
+			复制当前目录下的目录位当前目录下的c目录(c目录不存在)
+	d.移动目录(mv)
+		mv m\ n a 
+			剪切当前目录下的m n目录到a目录中(a目录存在)
+		mv a   b
+			重命名当前目录下a目录位b目录(b目录不存在)
+	/opt
+	+---------A
+	|         +---A1
+	|         +---A2
+	|
+	+---------B
+			  +--C
+			  +--D
+	mkdir -p A/A1 A/A2 B/C B/D
+	mkdir -p A/A{1,2} B/{C,D}
+    su - root
+9.文件操作
+	创建
+		touch(创建空文件)
+			touch a
+				当前目录下创建空文件a
+			touch /opt/b
+				/opt目录下创建空文件b
+		重定向
+			>   覆盖，把原有内容全部删除，放入新内容,如果没有该文件，自动创建
+				echo heygor>zhenshuai
+			>>  追加，原有内容下一行放入新内容，如果没有该文件，自动创建
+				echo zhenshuai>>heygor
+			1>  正确信息写入文件
+			2>  错误信息写入文件
+			&>  所有信息都写入文件
+			补充:echo  打印
+		vi/vim
+	删除(rm)
+		rm 1.log
+			删除当前目录下的1.log文件
+		rm -f 2.log
+			强制删除当前目录下2.log文件
+		rm -rf *
+			删除当前目录下所有文件
+	复制(cp)
+		cp e a
+			复制当前目录下的e文件到a目录中(a目录存在)
+		cp kouniqiwa wataxiwa
+			复制当前目录下的kouniqiwa文件到当前目录下的wataxiwa(wataxiwa目录不存在)
+	移动(mv)
+		mv a b d
+			剪切当前目录下的a和b文件到d目录中(d目录存在)
+		mv c f
+			重命名当前目录下c为当前目录下f(f目录不存在)
+	查看
+		cd ~
+
+		cat   	不分页显示文件内容
+			cat install.log
+		less    分页显示文件内容，可以向上向下翻页,按q退出
+			less install.log
+		more    分页显示文件内容，只能向下翻页,按q退出
+			more install.log
+		head    显示文件前几行
+			head -3 install.log 查看文件前3行
+		tail    显示文件后几行
+			tail -2 install.log 查看文件后2行
+		vi/vim
+	修改/创建
+		vi/vim  文件名
+		a.vi的三种模式
+			命令模式
+			编辑模式
+			末行模式
+		b.命令模式
+			跳转
+				gg   光标跳转到文件首行行首
+				100gg光标跳转到第100行行首
+				G    光标跳转到文件末行行首
+				^    光标跳转到本行内容行首
+				$    光标跳转到本行内容行尾
+			复制
+				yy   复制当前行内容
+				10yy 复制10行内容
+			粘贴
+				p
+			剪切/删除
+				dd   剪切/删除当前行内容
+				10dd 剪切/删除10行内容
+			搜索
+				?noarch 全文搜索noarch关键字
+				/noarch 全文搜索noarch关键字
+			命令模式进入编辑模式的方法
+				i    光标所在位置进行插入，并且进入到编辑模式
+				O  o
+				S  s
+				A  a
+		c.编辑模式
+			自己动手丰衣足食
+			编辑模式无法直接进入到末行模式，返回命令模式（esc）
+		d.末行模式
+			:set nu       显示行号
+			:set nonu     取消显示行号
+			:w            保存、另存
+			:q            退出
+			:wq!          强制保存退出
+			替换
+			:1,$s/a/b/    全文替换a为b，只替换每行第一个
+			:10s/a/b/g    第10行搜索a替换为b，全部替换(g)
+10.修改配置文件的方式修改IP
+	vim /etc/sysconfig/network-scripts/ifcfg-eth0
+	DEVICE       设备名称
+	HWADDR       网卡mac地址
+	TYPE         上网类型
+	ONBOOT       网卡是否随开机启动而启动,yes是，no否 
+	NM_CONTROLLED=no  是否为NetworkManager管理，yes是，no否
+	BOOTPROTO=static  启动协议(dhcp\static)
+	IPADDR=xxxxx      IP地址
+	NETMASK=xxxxx     子网掩码
+	重启网络服务
+	service network restart

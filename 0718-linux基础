@@ -1,0 +1,94 @@
+who
+whoami
+pwd
+cd
+ls
+alias    重命名、别名
+man
+info
+ping
+setup
+ifconfig
+service
+mkdir
+rm
+rmdir
+cp
+mv
+touch
+echo
+cat
+less
+more
+head
+tail
+tailf  监控文件内容
+vi
+hostname
+tar
+du
+gzip
+useradd
+passwd
+usermod
+userdel
+id      查看组信息
+chmod
+chown
+find
+locate
+grep
+top
+ps
+kill
+free
+netstat
+lsof
+vmstat
+chkconfig
+mount
+df
+init
+rpm
+-------------------------------------------------------
+1.软件的安装
+	a.rpm安装
+	b.自动安装
+b.自动安装
+	本地yum源
+	网络yum源
+	优点:不需要考虑依赖包的问题
+	1>创建空目录用于挂载
+		mkdir /yum
+	2>加载光驱
+		右键标签--设置--cd/dvd--使用iso映像文件--确定
+	3>搜索光盘对应硬件挂载到刚才创建的目录上
+		mount命令中搜索type是iso9660的就是光盘硬件
+		mount -o loop /dev/sr0 /yum
+	4>修改yum配置文件
+		删除/etc/yum.repos.d/目录下所有文件
+		rm -rf /etc/yum.repos.d/*
+		进入到yum配置文件所在目录
+		cd /etc/yum.repos.d/
+		创建一个文件以.repo结尾，文件内容为
+		[test]                          分类标识
+		name=test                       名字
+		baseurl=file:///yum/            自动安装命令到哪里去找所需要的软件包
+		enabled=1                       是否启动自动安装(1是启动，0是关闭)
+		gpgcheck=0                      是否开启软件包检查(1是开启，0是关闭)
+	5>清理yum缓存
+		yum clean all
+	6>查看可以进行自动安装的软件列表
+		yum list
+	7>安装mysql相关软件
+		yum install mysql* -y
+		注意:-y代表自动安装依赖包
+	8>启动mysql服务
+		service mysqld start
+	9>检查服务和端口
+		mysql的端口:  3306
+			netstat -an |grep 3306
+		mysqld的进程: mysqld
+
+
+
