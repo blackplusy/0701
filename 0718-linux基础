@@ -54,6 +54,8 @@ rpm
 1.软件的安装
 	a.rpm安装
 	b.自动安装
+	c.源码安装
+	d.二进制文件安装
 b.自动安装
 	本地yum源
 	网络yum源
@@ -129,5 +131,38 @@ c.ecshop项目环境搭建
 		数据库名     点搜(test)
 
 
+-------------------------------------------------------------------------------------------------------
 
+二进制文件安装
+1.mongodb软件的安装
+	a.软件的下载
+		操作系统  unix  linux  windows
+		位数      i386 i686    32位操作系统
+		          x86_64  x64  64位操作系统
+	b.通过winscp把下载好的软件压缩包传入linux中
+	c.解压压缩包
+		tar -xzvf mongodb-linux-x86_64-rhel62-3.6.13.tgz
+	d.重命名已经解压好的目录
+		mv mongodb-linux-x86_64-rhel62-3.6.13 mongodb
+	e.设置环境变量
+		/etc/profile     全局变量
+		~/.bash_profile    用户变量
+		在~/.bash_profile的Path后面添加mongodb的命令所在路径
+		:/root/mongodb/bin
+	f.使环境变量生效
+		source .bash_profile
+	补充:
+	启动mongodb服务命令
+		mkdir /data
+		mongod --dbpath /data --logpath /data/mongo.log --fork
+		注意:
+		mongod  	该命令使mongodb的主服务
+		--dbpath    存放数据的目录
+		--logpath   存放日志的位置(文件)
+		--fork      后台运行
+
+		mongodb的主服务:mongod
+		ps -ef |grep mongod
+		mongodb的端口: 27017
+		netstat -an |grep 27017
 
