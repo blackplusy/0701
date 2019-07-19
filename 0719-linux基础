@@ -116,7 +116,36 @@ awk -F ":" 'NF<4 {print $0}' passwd         打印字段小于4的内容
 
 awk -F ":" 'NR>=5&&NR<=10 {print $0}' passwd 打印第5行到第10行内容
 
- awk -F ":" '$3>=30&&$3<=100 {print $0}' passwd 打印第三列大于等于30并且小于等100的行的数据
+awk -F ":" '$3>=30&&$3<=100 {print $0}' passwd 打印第三列大于等于30并且小于等100的行的数据
+
+awk -F "分隔符" 'BEGIN{处理文件前执行的代码}{处理过程中执行的代码}END{处理文件后执行的代码}'
+输出顶部增加 heygor do this
+输出底部增加 good job
+
+awk -F ":" 'BEGIN{print "heygor do this"}{print $0}END{print "good job!"}' passwd
+
+打印字段数量大于4的总行数量
+补充:wc -l 统计、计算
+awk -F ":" 'NF>4 {print $0}' /etc/passwd |wc -l
+awk -F ":" 'BEGIN{ count=0 }NF>4{ count++ }END{ print count }' /etc/passwd
+
+把awk代码写入到文件中
+awk1代码:
+BEGIN{
+        FS=":"
+        count=0
+}
+{
+        if ( NF>4 ){
+                count++
+        }
+}
+END{
+        print count
+}
+awk命令调用文件方式
+awk -f awk1 /etc/passwd
+
 
 
 
