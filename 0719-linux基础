@@ -68,5 +68,59 @@ tenorder项目安装和部署
 			用户名  admin
 			密码    admin
 
+-------------------------------------------------------------------------------------------
+awk
+文本行的处理工具
+awk options 文件名
+-F  按照什么分隔
+""  代表分隔符
+$1  分隔后第一列的内容
+$2  分隔后第二列的内容
+$0  代表一整行
+$NF 代表最后一列
+NF  代表每行有多少列
+NR  代表当前行号
+ifconfig  |grep inet |grep -v inet6 |head -1 |awk -F " " '{ print $2}' |awk -F ":" '{print $2}' 查看IP地址
+
+cat /etc/passwd |awk -F ":" '{ print $1 }'
+
+awk -F ":" '{ print $1 }' /etc/passwd     打印文件第一列
+
+awk -F ":" '{ print $1,$6 }' /etc/passwd  打印文件第一列和第六列
+
+awk -F ":" '{ print $1":"$6 }' /etc/passwd 打印文件第一列和第六列中间用：
+
+awk -F ":" '{ print $0}' /etc/passwd      打印行中所有内容
+
+awk -F ":" '{ print $NF }' /etc/passwd   打印行中最后一列
+
+awk -F ":" '{ print NF }' /etc/passwd   打印行中有多少列
+
+awk -F ":" '{ print NR,$1 }' /etc/passwd 打印行号和第一列内容
+
+
+awk的操作符
+==  	等于
+!=		不等于
+>= 		大于等于
+<=		小于等于
+> 		大于
+< 		小于
+awk的逻辑操作符
+&&      逻辑与
+||      逻辑或
+!       逻辑非
+awk -F ":" 'NR==8 {print $0}' /etc/passwd   打印文件第8行
+
+awk -F ":" 'NF<4 {print $0}' passwd         打印字段小于4的内容
+
+awk -F ":" 'NR>=5&&NR<=10 {print $0}' passwd 打印第5行到第10行内容
+
+ awk -F ":" '$3>=30&&$3<=100 {print $0}' passwd 打印第三列大于等于30并且小于等100的行的数据
+
+
+
+
+
 
 
