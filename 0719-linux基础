@@ -146,6 +146,53 @@ END{
 awk命令调用文件方式
 awk -f awk1 /etc/passwd
 
+sed 
+字段编辑和字段替换
+删除命令  d  在查看信息时候屏蔽某些内容
+
+sed -e 'd' passwd     	删除所有行
+sed -e '1d' passwd   	删除第一行
+sed -e '1,3d' passwd   	删除1到3行
+sed -e '1d;3d' passwd   删除第1行和第3行
+sed -e '/nologin/d' passwd  删除含有nologin的行
+sed -e '/^root/d' passwd   删除root开头的行
+sed -e '/login$/d' passwd  删除login结尾的内容
+sed -e '/^$/d' passwd      删除所有空行
+sed -e '/^#/d' /etc/vsftpd/vsftpd.conf 删除所有以#开头的行
+
+打印、输出 p
+sed -n -e 'p' passwd       打印所有行
+sed -n -e '1p;3p' passwd   打印第一行和第三行
+sed -n -e '/^root/p' passwd打印以root开头的行
+
+替换，显示打印时候替换
+s/a/b/
+sed -e 's/root/admin/' passwd  	每行第一个root关键字替换为admin
+sed -e 's/root/simida/g' passwd 替换每行的root关键字为simida
+sed -e '2,10s/:/-/g' passwd     2到10行搜索：替换为-
+
+把结果保存到文件中
+sed -i '/root/d' passwd         删除root的行保存到文件中
+
+使用域进行定位
+echo "2019-07-19" |awk -F "-" '{print $2"-"$3""-$1}'
+echo "2019-07-19" |sed -r 's/(....)-(..)-(..)/\2-\3-\1/'
+echo "come on,baby" |sed -r 's/(.*),(.*)/\2,\1/'
+
+删除每行第二个字符
+cat passwd |sed -r 's/(.)(.)(.*)/\1\3/'
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
