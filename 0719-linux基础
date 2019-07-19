@@ -1,0 +1,72 @@
+1.yum自动安装
+配置文件中的baseurl
+本地yum源
+baseurl=file:///yum
+网络yum源
+2.安装ecshop
+3.二进制文件的安装和部署
+mongodb
+jdk
+tomcat
+---------------------------------------------------------
+tenorder项目安装和部署
+开发环境
+	1.开发语言: 		java
+	2.web服务器:		tomcat 7
+	3.数据库服务器:  mysql
+安装部署
+	1.安装操作系统
+	2.设置IP地址
+	3.设置主机名
+	4.绑定主机名
+	5.关闭防火墙
+	6.关闭selinux
+	7.安装mysql相关软件
+		a.配置好yum
+		b.通过yum安装好mysql服务器
+		c.启动mysql服务器后设置管理员密码
+		d.检查mysql端口和服务
+	8.安装配置jdk
+		a.下载
+		b.解压
+		c.设置环境变量
+		d.使环境变量生效
+	9.安装部署tomcat
+		a.下载
+		b.解压
+		c.进入到tomcat的bin目录执行startup.sh
+		d.检查tomcat
+	10.删除tomcat中webapps目录下所有文件
+		rm -rf /root/apache-tomcat-7.0.77/webapps/*
+	11.把tenorder项目在win下解压，传入linux中tomcat的webapps目录下
+	12.导入数据库
+		a.进入到tenorder.sql所在目录
+			cd /root/apache-tomcat-7.0.77/webapps/tenorder/
+		b.登陆mysql数据库
+			mysql -u root -p
+			管理员登陆mysql本地数据库
+		c.创建数据库
+			create database ten;
+		d.切换数据库为ten
+			use ten;
+		e.导入tenorder.sql文件
+			source tenorder.sql;
+		f.退出mysql
+			exit
+	13.修改tenorder的配置信息(安装文档)
+		vim /root/apache-tomcat-7.0.77/webapps/tenorder/WEB-INF/classes/database.properties
+	14.重启tomcat服务器
+		进入到tomcat的bin目录
+		cd /root/apache-tomcat-7.0.77/bin/
+		执行shutdown.sh
+		./shutdown.sh
+		执行startup.sh
+		./startup.sh
+	15.访问tenorder项目
+		前台:linuxip:8080/tenorder
+		后台:linuxip:8080/tenorder/admin
+			用户名  admin
+			密码    admin
+
+
+
