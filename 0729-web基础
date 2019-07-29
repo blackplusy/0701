@@ -103,6 +103,32 @@ c.c/s架构软件
 		302   3开头移动或者缓存(重定向)
 		404   4开头客户端请求有问题
 		500   5开头服务端有问题
+	c.域名
+		FQDN(完全合格域名)
+		www.heygor.com
+		heygor.handsome.cn
+		DNS(域名解析服务器)
+		域名--IP(正向解析)
+			win+r--cmd(命令提示符)
+			ping www.baidu.com
+			nslookup www.baidu.com
+		IP--域名(反向解析)
+			win+r--cmd(命令提示符)
+			nslookup 14.215.177.39
+	d.端口
+		区分应用层进程的标识
+		mysql 	3306
+		oracle 	1521
+		apache/nginx/iis  80
+		tomcat          8080
+		win下查看端口
+			win+r--cmd(命令提示符)
+			netstat -an |find "135"
+			netstat -an  查看win中开放的所有端口
+			|            管道，前面的输出作为后面的输入
+			find         搜索
+
+
 
 
 
