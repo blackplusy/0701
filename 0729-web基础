@@ -38,7 +38,73 @@ c.c/s架构软件
 		ui    用户接口      美工
 	后端:
 		操作系统
+			unix     mac os   ios  aix
+			linux    安卓   redhat  suse  ubuntu
+			windows  
+					server   03 08 12 16
+					desktop  win7  winxp  win10  
 		web服务器
+			apache   不支持java
+			nginx    轻量级web服务器(负载均衡、反向代理)
+			tomcat   java
+			iis      微软
 		数据库服务器
+			oracle   中大型
+			mysql    互联网
+			mongodb  大数据
+	后端常见搭配
+		操作系统      web服务器      数据库服务器
+		win             iis           sqlserver/access
+		               apache         mysql
+		               tomcat         mysql/oracle
+		linux          apache         mysql            (LAMP)
+		               nginx          mysql            (LNMP)
+		               tomcat         mysql/oracle
+
+3.访问网站的过程
+	a.浏览器中输入www.sina.com.cn
+	b.系统会到hosts文件中搜索石是否有www.sina.com.cn对应IP
+			hosts文件:简易临时DNS服务器
+			192.168.6.10   www.baidu.com
+	c.如果没有，数据通过网络传输到DNS服务器(域名解析)中，解析www.sina.com.cn所对应的IP地址
+	d.数据通过网络传输到目标网站的web服务器上
+	e.web服务器解析请求(传过来的数据),分析要什么
+	f.web服务器发送请求到数据库中，请求数据
+	g.数据库解析web服务器请求，返回请求的数据
+	h.web服务器整合数据，传回浏览器中
+
+4.URL
+	url:统一资源定位器
+	http://s.taobao.com:80/goods/search?q=%E8
+	a.url组成
+		协议   http://
+		域名   s.taobao.com
+		端口   :80
+		虚拟目录:goods
+		访问文件:search
+		访问参数:q=%E8
+	b.协议
+		一组规则规范
+		http协议(超文本传输协议)，规定了数据先传什么，后传什么，怎样传
+		http协议特点:无状态(彼此不记录过去的行为)
+		超文本(富文本):声音、图像、视频
+		普通文本
+		http协议的请求
+		get   主要用于浏览,请求的数据显示在url上，相对不安全
+			https://s.taobao.com/search?q=lv
+			https://s.taobao.com/search?q=zara
+		post  主要用于提交，请求的数据显示在请求体上，相对安全
+		有请求就会有响应，请求分为请求头、请求体，响应分为响应头和响应体
+		cookie&session
+		cookie 验证信息，访问记录  定投广告
+		session 验证信息，会话保持，30分钟超时
+		状态码
+		200   2开头请求成功
+		302   3开头移动或者缓存(重定向)
+		404   4开头客户端请求有问题
+		500   5开头服务端有问题
+
+
+
 
 
