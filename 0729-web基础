@@ -1,0 +1,44 @@
+----------------------------------
+1.常见的软件架构
+	qq       c/s 
+	wechat   c/s  b/s
+	陌陌     c/s
+	微博     c/s  b/s
+	农药     c/s
+	美图     c/s  b/s
+	淘宝     c/s  b/s
+	高德     c/s  b/s
+	b站      c/s  b/s
+	快播     c/s  b/s
+a.单机软件
+	不需要网络就可以执行的应用程序
+	hackercon
+	defcon
+b.b/s架构软件
+	b:浏览器
+		ie           360 百度 qq 傲游 uc
+		firefox      测试
+		chrome       开发
+		safari       苹果
+	s:服务器
+		性能非常牛逼的电脑
+c.c/s架构软件
+	c:客户端
+		pc端     笔记本、台式...
+		移动端   手机、ipad、智能终端
+	s:服务器
+2.前端和后端(b/s架构)
+	前端:
+		html  标记性  静态网页(在服务器上什么亚子，在浏览器中什么亚子)
+		css   样式表  结构美化 懂代码
+		js    javascript   前端开发语言 动态页面(动画、交互)
+			  java         后端开发语言 核心功能
+			  jsp          java server page
+			  框架    	   jquery
+		ui    用户接口      美工
+	后端:
+		操作系统
+		web服务器
+		数据库服务器
+
+
