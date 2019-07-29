@@ -158,8 +158,15 @@ c.c/s架构软件
 			时间
 			服务器软件版本
 		c5.响应体信息
-
-
+	d.fiddler的断点调试
+		d1.下载安装fiddler(傻瓜安装)
+		d2.设置断点
+			bpu http://192.168.7.193:81/ecshop
+		d3.取消断点
+			bpu
+		补充:
+		bpu http://192.168.7.193:81/ecshop/user.php
+		bpu
 
 
 
